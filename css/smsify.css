@@ -1,0 +1,137 @@
+.credits-container {
+	position:absolute;
+	left:0;
+	display:inline-block;
+	text-align:right;
+	font-weight: bold;
+	color: #000;
+	width:100%;
+}
+
+.credits-container .smsify-credits {
+	position:absolute;
+	right:50px;
+	margin-top:17px;
+	text-align:left;
+}
+
+#smsify-loading {position: absolute; height:300px; width:900px; top:200px; text-align: center;}
+
+#uploadform ul {
+    list-style-type: none;
+    padding: 5px 0 0 0;
+}
+
+#uploadform li {
+    padding-bottom: 20px;
+}
+
+#uploadform label {
+    width: 300px;
+}
+
+#quicksendProgress {
+	position: absolute;
+	left: 120px;
+	top: 140px;
+	display: none;
+	text-align: center;
+}
+
+.quicksendSuccess {
+	display: none;
+}
+
+.quicksend .k-icon {
+	vertical-align: top;
+    width: 14px;
+    padding: .1em .4em .3em;
+    display: block;
+    margin: auto;
+}
+
+#btn_send_to_group {
+	width: 250px;
+}
+    
+label {
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+}
+
+#sendSMStoGroup label {
+	display: inline-block;
+    width: 300px;
+    text-align: left;
+}
+
+#sendToGroupContainer {
+	float: left;
+	height: 200px;
+	width: 300px;
+}
+
+#sendToGroupContainer textarea {
+	width: 230px;
+	height: 120px;
+}
+
+#sendToGroupContainer ul {
+    list-style: none;
+    padding: 5px;
+}
+
+.sendToGroupSuccess {
+    display: none;
+}
+
+.sendToGroupProgress {
+	display: none;
+	position: absolute;
+}
+
+#sms-group-container {
+	height: 480px;	
+}
+
+#schedule-container {
+	height: 200px;
+	width: 300px;
+	padding-top: 20px;
+	float: left;
+}
+
+#schedule-container label {
+	width: 80px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 5px;
+}
+
+#schedule-container-quick {
+	float: left;
+	width: 300px;
+}
+
+#schedule-container-quick label {
+	width: 80px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 10px;
+	vertical-align: middle;
+}
+
+#uploadContactsWrapper {
+	height:400px;	
+}
+.smsify-api-container{padding-top:10px;}
+.smsify-api-container label{width:auto}
+.smsify-api-container .smsify-error {background-color: #ffebe8; color:#000; border: solid 1px #c00; padding:2px; border-radius:3px;}
+.smsify-api-container .smsify-success {background-color: #f0fff0; padding:2px; border: solid 1px #d0dfd0; height:40px; border-radius:3px;}
+.postbox .inside .smsify-logo {float:right; height:48px;width:48px;background: url(../images/logo.png) no-repeat right;}
+.smsify-error {height:50px;}
+#smsifymenu{height:27px;}
+.smsify-formrow {padding: 5px;}
+.smsify-formrow #csvfile{padding-left: 15px;}
+.content-item-40, .item-40 {display:none}

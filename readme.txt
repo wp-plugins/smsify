@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,7 +39,7 @@ Full list of features:
 
 == Screenshots ==
 1. SMSify WordPress Admin menu
-2. Import contacts by dragging or selecting a csv file from you computer
+2. Import contacts by uploading a csv file from you computer
 3. A powerful contacts grid with pagination and advanced filtering options
 4. Quicksend SMS modal window allowing you to quickly locate a contact a send an SMS
 5. Modify contacts directly in the grid and hit save.
@@ -55,6 +55,9 @@ Full list of features:
 = 1.0.1 =
 * Replaced iFrame views with native WordPress admin ones.
 * Ability to talk to SMSify via API calls
+
+= 1.0.2 =
+* Added plugin screenshots
 
 == Upgrade Notice ==
 N/A

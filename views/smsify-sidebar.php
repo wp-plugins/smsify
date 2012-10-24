@@ -1,3 +1,6 @@
+<?php if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
+    exit ("Do not access this file directly.");
+?>
 <div id="side-info-column" class="inner-sidebar">
     <div class="postbox">                
         <h3>Plugin Info</h3>

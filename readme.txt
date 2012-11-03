@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,7 @@ Full list of features:
 *	Custom Sender IDs - Conditions apply
 *	Sophisticated admin dashboard
 *	Activity Charts
+*   Video Installation Guides
 *	24/7 Email support
 *	Secure transmissions over SSL
 *	No contracts, no setup fees, no tricks
@@ -58,6 +59,9 @@ Full list of features:
 
 = 1.0.2 =
 * Added plugin screenshots
+
+= 1.0.3 =
+* Added Video Installation Guides
 
 == Upgrade Notice ==
 N/A

@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,18 +50,24 @@ Full list of features:
 9. 24 hour Activity Chart
 
 == Changelog ==
-= 1.0.0 =
-* SMSify was born
+= 1.0.4 =
+* Friendler error messages when no credits available
+* Better quality videos
+
+= 1.0.3 =
+* Added Video Installation Guides
+
+= 1.0.2 =
+* Added plugin screenshots
 
 = 1.0.1 =
 * Replaced iFrame views with native WordPress admin ones.
 * Ability to talk to SMSify via API calls
 
-= 1.0.2 =
-* Added plugin screenshots
+= 1.0.0 =
+* SMSify was born
 
-= 1.0.3 =
-* Added Video Installation Guides
+
 
 == Upgrade Notice ==
 N/A

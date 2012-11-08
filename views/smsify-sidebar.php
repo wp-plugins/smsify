@@ -12,7 +12,6 @@
             <p>Email : <a href="mailto:info@smsify.com.au" target="_blank">info@smsify.com.au</a></p>
             <p>Twitter : @<a href="http://twitter.com/SMSifyAU" target="_blank">SMSifyAU</a></p>
             <p>Facebook : <a href="http://facebook.com/smsify" target="_blank">SMSify</a></p>
-            <p>YouTube : <a href="http://www.youtube.com/SMSifyAU" target="_blank">SMSifyAU</a></p>
         </div>
     </div>
 </div><!-- end side-info-column //-->

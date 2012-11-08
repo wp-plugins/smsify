@@ -10,14 +10,17 @@ if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
         <div class="post-body">
             <div class="post-body-content">        
                 <div class="stuffbox" style="margin-right:300px;">
-                    <h3><label for="link_box">SMSify Video Guide</label></h3>
+                    <h3><label for="link_box">SMSify Video Guides</label></h3>
                     <div class="inside">    
                         <div class="smsify-api-container">
+                            <p>SMSify promotional video which demonstrates the benefits of SMS technology and many reasons why you would benefit from using SMSify.</p>
+                            <iframe src="http://player.vimeo.com/video/52957980?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/52957980">SMSify Promo Video</a> from <a href="http://vimeo.com/user14528592">SMSify</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+                            <br/>
                             <p>This video shows the Trial sign up process and how to locate your API Key once you have signed up. We reccomend viewing in full screen mode.</p>
-                            <iframe width="560" height="315" src="http://www.youtube.com/embed/lLH-MHLhOd8" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="640" height="360" src="http://www.youtube.com/embed/lLH-MHLhOd8?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
                             <br/>
                             <p>The following video will guide you through all features of SMSify WordPress plugin. We reccomend viewing in full screen mode.</p>
-                            <iframe width="560" height="315" src="http://www.youtube.com/embed/DYuoNVsAlY8" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="640" height="360" src="http://www.youtube.com/embed/DYuoNVsAlY8?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
                             <p>Key things to remember:<br/>
                                 - Add your SMSify API Key<br/>
                                 - Create Contact Groups<br/>

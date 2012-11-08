@@ -5,10 +5,11 @@ function smsify_getConfig() {
     global $params;
     global $current_user;
     $params = new stdClass();
-    $params->appVersion = '1.0.1';
+    $params->appVersion = '1.0.3';
     $params->api_key = get_user_meta($current_user->ID, 'smsify-api-key', true);
-    $params->cdnurl = 'https://www.smsify.com.au';
-    $params->apiEndpoint = 'https://www.smsify.com.au';
+    $params->apihost = 'www.smsify.com.au';
+    $params->cdnurl = 'https://' . $params->apihost;
+    $params->apiEndpoint = 'https://' . $params->apihost;
     $params->cssurl = '/' . PLUGINDIR . '/smsify/css';
     $params->jsurl = '/' . PLUGINDIR . '/smsify/js';
     $params->imageurl = '/' . PLUGINDIR . '/smsify/images';
@@ -47,9 +48,12 @@ function smsify_getConfig() {
 function smsify_checkCredits() {
 	global $params;
 	// Get credits for this user and check that API key is good
-if(!$credits = intval(trim(file_get_contents($params->apiEndpoint . '/transport/?method=getCreditsRaw&key=' . $params->api_key)))) {
-    echo "<div class='error smsify-error'>We seem to have a little problem. Please check that you: <a href='admin.php?page=wp-smsify-settings'><br/>1. have entered the correct SMSify API Key on the Settings page.</a><br/>2. have enough credits to send at least one SMS. You can purchase more credits on <a href='http://www.smsify.com.au/pricing' target='_blank' title='Purchase SMSify credits'>SMSify website</a></div>";    
-	}
+    if(!$credits = intval(trim(file_get_contents($params->apiEndpoint . '/transport/?method=getCreditsRaw&key=' . $params->api_key)))) {
+        // If another wordpress site using this plugin
+        if($_SERVER['SERVER_NAME'] != $params->apihost) {    
+            echo "<div class='error smsify-error'>We seem to have a little problem. Please check that you: <a href='admin.php?page=wp-smsify-settings'><br/>1. have entered the correct SMSify API Key on the Settings page.</a><br/>2. have enough credits to send at least one SMS. You can purchase more credits on <a href='http://www.smsify.com.au/pricing' target='_blank' title='Purchase SMSify credits'>SMSify website</a></div>";    
+    	}
+    }
 	return $credits;
 }	
 ?>

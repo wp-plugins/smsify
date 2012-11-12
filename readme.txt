@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 1.0.2
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,6 +11,8 @@ SMSify is a free WordPress plugin that allows you to <strong>send personalised S
 
 == Description ==
 SMSify is a premium bulk SMS provider that uses the latest web technologies.  This plugin adds no additional load on your server and it does not modify your databse. We do all the grunt work for you behind the scenes. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule messages</strong>.  It features a beautiful AJAX user interface that is very simple to use. Screenshots available. Due to the cross-domain restrictions in Internet Explorer, this plugin works best in modern browsers such as: Google Chrome, Firefox and Safari. For other broswsers, we recommend using the app on www.smsify.com.au Website.
+
+FOR USERS SENDING MESSAGES TO THE USA: If you wish to deliver text messages to the USA, you require a dedicated short code or a US long number. This is a carrier requirement which does not apply to most countries. Please email support@smsify.com.au with your US long (standard) number or a short code to be set up as a Sender ID.
 
 Full list of features:
 
@@ -22,17 +24,19 @@ Full list of features:
 *	Custom Sender IDs - Conditions apply
 *	Sophisticated admin dashboard
 *	Activity Charts
+*   Video Installation Guides
 *	24/7 Email support
 *	Secure transmissions over SSL
 *	No contracts, no setup fees, no tricks
 *	Easy SMS credit structure (1 credit = 1 SMS)
-*	Free plugin for a premium SMS service
 
 == Installation ==
 *	Upload `smsify` folder to the `/wp-content/plugins/` directory
 *	Activate the plugin through the 'Plugins' menu in WordPress
 *	Purchase SMS credits at [www.smsify.com.au](http://www.smsify.com.au "SMSify - web based bulk SMS service")
 *	Enjoy!
+
+FOR USERS SENDING MESSAGES TO THE USA: If you wish to deliver text messages to the USA, you require a dedicated short code or a US long number. This is a carrier requirement which does not apply to most countries. Please email support@smsify.com.au with your US long (standard) number or a short code to be set up as a Sender ID.
 
 == Frequently Asked Questions ==
 *	For an up to date list of FAQs, please visit [http://www.smsify.com.au/faq-page/](http://www.smsify.com.au/faq-page/ "SMSify FAQ page")
@@ -49,15 +53,27 @@ Full list of features:
 9. 24 hour Activity Chart
 
 == Changelog ==
-= 1.0.0 =
-* SMSify was born
+= 1.0.5 =
+* Added special instructions for US customers
+
+= 1.0.4 =
+* Friendler error messages when no credits available
+* Better quality videos
+
+= 1.0.3 =
+* Added Video Installation Guides
+
+= 1.0.2 =
+* Added plugin screenshots
 
 = 1.0.1 =
 * Replaced iFrame views with native WordPress admin ones.
 * Ability to talk to SMSify via API calls
 
-= 1.0.2 =
-* Added plugin screenshots
+= 1.0.0 =
+* SMSify was born
+
+
 
 == Upgrade Notice ==
 N/A

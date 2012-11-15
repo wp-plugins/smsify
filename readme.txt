@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 1.0.5
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,8 +11,6 @@ SMSify is a free WordPress plugin that allows you to <strong>send personalised S
 
 == Description ==
 SMSify is a premium bulk SMS provider that uses the latest web technologies.  This plugin adds no additional load on your server and it does not modify your databse. We do all the grunt work for you behind the scenes. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule messages</strong>.  It features a beautiful AJAX user interface that is very simple to use. Screenshots available. Due to the cross-domain restrictions in Internet Explorer, this plugin works best in modern browsers such as: Google Chrome, Firefox and Safari. For other broswsers, we recommend using the app on www.smsify.com.au Website.
-
-FOR USERS SENDING MESSAGES TO THE USA: If you wish to deliver text messages to the USA, you require a dedicated short code or a US long number. This is a carrier requirement which does not apply to most countries. Please email support@smsify.com.au with your US long (standard) number or a short code to be set up as a Sender ID.
 
 Full list of features:
 
@@ -36,8 +34,6 @@ Full list of features:
 *	Purchase SMS credits at [www.smsify.com.au](http://www.smsify.com.au "SMSify - web based bulk SMS service")
 *	Enjoy!
 
-FOR USERS SENDING MESSAGES TO THE USA: If you wish to deliver text messages to the USA, you require a dedicated short code or a US long number. This is a carrier requirement which does not apply to most countries. Please email support@smsify.com.au with your US long (standard) number or a short code to be set up as a Sender ID.
-
 == Frequently Asked Questions ==
 *	For an up to date list of FAQs, please visit [http://www.smsify.com.au/faq-page/](http://www.smsify.com.au/faq-page/ "SMSify FAQ page")
 
@@ -53,6 +49,12 @@ FOR USERS SENDING MESSAGES TO THE USA: If you wish to deliver text messages to t
 9. 24 hour Activity Chart
 
 == Changelog ==
+= 2.0.0 =
+* Add option to obtain API Key in the modal window without redirecting to SMSify Website.
+* Add option to purchase credits in the modal window without redirecting to SMSify Website.
+* More reliable SMS delivery to US numbers
+* Removed special instructions for US users as they don't apply any more.
+
 = 1.0.5 =
 * Added special instructions for US customers
 
@@ -72,8 +74,6 @@ FOR USERS SENDING MESSAGES TO THE USA: If you wish to deliver text messages to t
 
 = 1.0.0 =
 * SMSify was born
-
-
 
 == Upgrade Notice ==
 N/A

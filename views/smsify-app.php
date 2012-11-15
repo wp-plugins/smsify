@@ -14,8 +14,10 @@ wp_enqueue_style('smsify');
 wp_enqueue_script('smsify-common');
 wp_enqueue_script('kendo-all');
 wp_enqueue_script('kendo-controller');
+wp_enqueue_script('settings-controller');
 ?>
 <script>var smsifyCredits = <?php echo($credits) ?>;</script>
+<div id="smsifywindow"></div>
 <div id="icon-edit-comments" class="icon32"><br /></div>
 <h2 class="smsify-app-title">Send SMS</h2>
 <!-- CONTENT (start) -->

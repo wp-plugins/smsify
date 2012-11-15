@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 1.0.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,11 +22,11 @@ Full list of features:
 *	Custom Sender IDs - Conditions apply
 *	Sophisticated admin dashboard
 *	Activity Charts
+*   Video Installation Guides
 *	24/7 Email support
 *	Secure transmissions over SSL
 *	No contracts, no setup fees, no tricks
 *	Easy SMS credit structure (1 credit = 1 SMS)
-*	Free plugin for a premium SMS service
 
 == Installation ==
 *	Upload `smsify` folder to the `/wp-content/plugins/` directory
@@ -49,15 +49,31 @@ Full list of features:
 9. 24 hour Activity Chart
 
 == Changelog ==
-= 1.0.0 =
-* SMSify was born
+= 2.0.0 =
+* Add option to obtain API Key in the modal window without redirecting to SMSify Website.
+* Add option to purchase credits in the modal window without redirecting to SMSify Website.
+* More reliable SMS delivery to US numbers
+* Removed special instructions for US users as they don't apply any more.
+
+= 1.0.5 =
+* Added special instructions for US customers
+
+= 1.0.4 =
+* Friendler error messages when no credits available
+* Better quality videos
+
+= 1.0.3 =
+* Added Video Installation Guides
+
+= 1.0.2 =
+* Added plugin screenshots
 
 = 1.0.1 =
 * Replaced iFrame views with native WordPress admin ones.
 * Ability to talk to SMSify via API calls
 
-= 1.0.2 =
-* Added plugin screenshots
+= 1.0.0 =
+* SMSify was born
 
 == Upgrade Notice ==
 N/A

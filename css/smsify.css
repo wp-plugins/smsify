@@ -7,21 +7,18 @@
 	color: #000;
 	width:100%;
 }
-
 .credits-container .smsify-credits {
 	position:absolute;
 	right:50px;
 	margin-top:17px;
 	text-align:left;
 }
-
 #smsify-loading {position: absolute; height:300px; width:900px; top:200px; text-align: center;}
 
 #uploadform ul {
     list-style-type: none;
     padding: 5px 0 0 0;
 }
-
 #uploadform li {
     padding-bottom: 20px;
 }
@@ -29,7 +26,6 @@
 #uploadform label {
     width: 300px;
 }
-
 #quicksendProgress {
 	position: absolute;
 	left: 120px;
@@ -37,11 +33,9 @@
 	display: none;
 	text-align: center;
 }
-
 .quicksendSuccess {
 	display: none;
 }
-
 .quicksend .k-icon {
 	vertical-align: top;
     width: 14px;
@@ -49,34 +43,43 @@
     display: block;
     margin: auto;
 }
-
 #btn_send_to_group {
 	width: 250px;
-}
-    
+} 
 label {
     display: inline-block;
     width: 200px;
     text-align: left;
 }
-
+#api-key-container {
+	display: inline;
+}
+#api-key-container label {
+	padding-left: 20px;
+	width: 60px;
+}
+#api-key-container input[type="text"] {height:23px; width:280px; font-size:14px; color:#999;}
+#api-key-container .k-button {width:100px;}
+#api-key-container .smsify-key-button {
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+#key-form {height: 145px;}
+#key-form {margin-top: 30px;}
 #sendSMStoGroup label {
 	display: inline-block;
     width: 300px;
     text-align: left;
 }
-
 #sendToGroupContainer {
 	float: left;
 	height: 200px;
 	width: 300px;
 }
-
 #sendToGroupContainer textarea {
 	width: 230px;
 	height: 120px;
 }
-
 #sendToGroupContainer ul {
     list-style: none;
     padding: 5px;
@@ -85,23 +88,19 @@ label {
 .sendToGroupSuccess {
     display: none;
 }
-
 .sendToGroupProgress {
 	display: none;
 	position: absolute;
 }
-
 #sms-group-container {
 	height: 480px;	
 }
-
 #schedule-container {
 	height: 200px;
 	width: 300px;
 	padding-top: 20px;
 	float: left;
 }
-
 #schedule-container label {
 	width: 80px;
 	display: inline-block;
@@ -113,7 +112,6 @@ label {
 	float: left;
 	width: 300px;
 }
-
 #schedule-container-quick label {
 	width: 80px;
 	display: inline-block;
@@ -121,7 +119,6 @@ label {
 	padding: 10px;
 	vertical-align: middle;
 }
-
 #uploadContactsWrapper {
 	height:400px;	
 }

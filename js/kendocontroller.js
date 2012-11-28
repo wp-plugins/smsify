@@ -98,7 +98,7 @@ $ = jQuery, $(document).ready(function () {
     function c(n, r, i) {
         $("#quicksendProgress").hide();
         var s = $.parseJSON(n);
-        s.status ? $(".quicksendSuccess").show() : ($("#quicksendContainer").show(), alert(s.message)), s.d && smsifyUpdateCredits(s.d), e.read(), t.read()
+        s.status ? $(".quicksendSuccess").show() : ($("#quicksendContainer").show(), alert(s.m)), s.d && smsifyUpdateCredits(s.d), e.read(), t.read()
     }
     function h(e) {
         alert("There was a problem sending your message.\n If problem persists, contact support@smsify.com.au")

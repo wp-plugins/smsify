@@ -40,7 +40,6 @@ wp_enqueue_script('settings-controller');
             </div>
             <div class="content-item-10">
                 <div class="k-block k-shadow">    
-                    <h3>Contact Groups</h3>
                     <p>This page allows you to manage your contact groups. Your 'Default' contact group is not listed here because it cannot be deleted or modified. The grid below will only show the groups you created yourself.</p>
                     <p>When you create, update or delete group(s), press <strong>Save changes</strong> button to save your changes permanently.</p>
                     <p><strong>Take caution when deleting groups. If you delete a group you will also delete all contacts associated with that group.</strong></p>
@@ -49,7 +48,6 @@ wp_enqueue_script('settings-controller');
             </div>
             <div class="content-item-20">
                 <div id="sms-group-container" class="k-block k-shadow">        
-                    <h3>Send Bulk SMS</h3>
                     <span class="smsify-credits"></span>
                     <div class="sendToGroupSuccess k-block k-success-colored"><p>Your message has been added to the delivery queue successfully.<br/>You can see your activity charts by clicking on 'Activity Charts' menu.</p></div>
                     <form name="sendSMStoGroup" id="sendSMStoGroup" method="post">    
@@ -64,8 +62,21 @@ wp_enqueue_script('settings-controller');
                             <label for="schedule">Schedule: </label><input type="checkbox" id="schedule" data-bind="checked: scheduled" /><br/> 
                             <label for="scheduleDatePicker">Select date:</label><input id="scheduleDatePicker" data-bind="enabled: scheduled"/><br/>
                             <label for="scheduleTimePicker">Select time:</label><input id="scheduleTimePicker" data-bind="enabled: scheduled"/><br/>
-                            <p>Your local timezone is detected automatically and is used to deliver messages.</p>
+                            <label for="run_every">Run every:</label><select id="run_every" data-bind="enabled: scheduled">
+                                <option value="0">Run once</option>
+                                <option value="86400">Day</option>
+                                <option value="604800">Week</option>
+                                <option value="1209600">2 Weeks</option>
+                                <option value="1814400">3 Weeks</option>
+                                <option value="2592000">Month</option>
+                                <option value="5184000">2 Months</option>
+                                <option value="7776000">3 Months</option>
+                                <option value="15552000">6 Months</option>
+                                <option value="31104000">Year</option>
+                            </select><br/>
+                            <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="0" min="0" max="365" step="1" data-bind="enabled: scheduled" /><br/>
                             <br/>
+                            <p>Your local timezone is detected automatically and is used to deliver messages.</p>
                             <input type="submit" name="btn_send_to_group" id="btn_send_to_group" class="button-primary" value="SEND" /><span class="sendToGroupProgress"><img src="<?php echo $params->cdnurl ?>/wp-includes/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Sending...</p></span>
                         </div>
                     </form>
@@ -88,7 +99,6 @@ wp_enqueue_script('settings-controller');
             <div class="content-item-40">
                 <div id="uploadContactsWrapper" class="k-block k-shadow">
                 <form id="uploadform" method="post">
-                    <h3>Import Your Contacts</h3>
                     <ul>    
                         <li><label for="uploadGroup">Upload contacts to this group:</label><br/><input id="uploadGroup" value="0" /></li>
                         <li>                                   
@@ -107,8 +117,8 @@ wp_enqueue_script('settings-controller');
     <div id="quicksendPopup" style="margin-right:10px;">
         <div class="quicksendSuccess k-block k-success-colored"><p>Your message has been added to the delivery queue successfully.<br/>You can see your activity charts by clicking on 'Activity Charts' menu.</a></div>
         <div id="quicksendContainer">   
-            <h2>#= first_name # #= last_name #</h2>
-            <em>#= mobile_number #</em><br/><br/>
+            <strong>#= first_name # #= last_name # - <em>#= mobile_number #</em></strong>
+            <br/><br/>
             <input type="hidden" name="quicksend_contact_id" id="quicksend_contact_id" value="#= contact_id #" />
             <label for="quicksendEditor" style="width:250px;">Message (max 160 characters) *</label><textarea name="quicksendEditor" id="quicksendEditor" rows="5" maxlength="160" style="width:290px;"></textarea>
             <div style="height:20px;"></div>
@@ -116,9 +126,21 @@ wp_enqueue_script('settings-controller');
                 <label for="schedule-quick">Schedule: </label><input type="checkbox" id="schedule-quick" data-bind="checked: scheduled" /><br/> 
                 <label for="scheduleDatePicker-quick">Select date:</label><input id="scheduleDatePicker-quick" data-bind="enabled: scheduled" style="width:150px;"/><br/>
                 <label for="scheduleTimePicker-quick">Select time:</label><input id="scheduleTimePicker-quick" data-bind="enabled: scheduled" style="width:150px;"/><br/>
+                <label for="run_every-quick">Run every:</label><select id="run_every-quick" data-bind="enabled: scheduled" style="width:150px;>
+                                <option value="0">Run once</option>
+                                <option value="86400">Day</option>
+                                <option value="604800">Week</option>
+                                <option value="1209600">2 Weeks</option>
+                                <option value="1814400">3 Weeks</option>
+                                <option value="2592000">Month</option>
+                                <option value="5184000">2 Months</option>
+                                <option value="7776000">3 Months</option>
+                                <option value="15552000">6 Months</option>
+                                <option value="31104000">Year</option>
+                            </select><br/>
+                <label for="run_times-quick">Run times (0 = forever):</label><input id="run_times-quick" type="number" value="0" min="0" max="365" step="1" data-bind="enabled: scheduled" style="width:150px;" /><br/>
                 <br/>
                 <p>Your local timezone is used to deliver messages.</p>
-                <div style="height:20px;"></div>
                 <p align="right"><button class="k-button btn_send_to_number" id="btn_send_to_number">SEND</button></p>
             </div>
         </div>

@@ -132,3 +132,4 @@ label {
 .smsify-formrow {padding: 5px;}
 .smsify-formrow #csvfile{padding-left: 15px;}
 .content-item-40, .item-40 {display:none}
+input, textarea, select {background: #ffffff}

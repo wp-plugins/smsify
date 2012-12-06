@@ -30,6 +30,7 @@ wp_enqueue_script('settings-controller');
             <li class="item-20">Send SMS</li>
             <li class="item-30">Activity Charts</li>
             <li class="item-40">Import Contacts</li>
+            <li class="item-50">My Schedules</li>
         </ul>
         <div class="smsify-content">
             <div class="content-item-0">
@@ -49,7 +50,7 @@ wp_enqueue_script('settings-controller');
             <div class="content-item-20">
                 <div id="sms-group-container" class="k-block k-shadow">        
                     <span class="smsify-credits"></span>
-                    <div class="sendToGroupSuccess k-block k-success-colored"><p>Your message has been added to the delivery queue successfully.<br/>You can see your activity charts by clicking on 'Activity Charts' menu.</p></div>
+                    <div class="sendToGroupSuccess k-block k-success-colored"><p>Your message has been added to the delivery queue successfully.<br/>Your credit(s) will be deducted after SMS has been sent successfully.</p></div>
                     <form name="sendSMStoGroup" id="sendSMStoGroup" method="post">    
                         <div id="sendToGroupContainer">
                             <ul id="fieldlist">
@@ -62,19 +63,19 @@ wp_enqueue_script('settings-controller');
                             <label for="schedule">Schedule: </label><input type="checkbox" id="schedule" data-bind="checked: scheduled" /><br/> 
                             <label for="scheduleDatePicker">Select date:</label><input id="scheduleDatePicker" data-bind="enabled: scheduled"/><br/>
                             <label for="scheduleTimePicker">Select time:</label><input id="scheduleTimePicker" data-bind="enabled: scheduled"/><br/>
-                            <label for="run_every">Run every:</label><select id="run_every" data-bind="enabled: scheduled">
-                                <option value="0">Run once</option>
-                                <option value="86400">Day</option>
-                                <option value="604800">Week</option>
-                                <option value="1209600">2 Weeks</option>
-                                <option value="1814400">3 Weeks</option>
-                                <option value="2592000">Month</option>
-                                <option value="5184000">2 Months</option>
-                                <option value="7776000">3 Months</option>
-                                <option value="15552000">6 Months</option>
-                                <option value="31104000">Year</option>
+                            <label for="run_every">Run:</label><select id="run_every" data-bind="enabled: scheduled">
+                                <option value="0">once</option>
+                                <option value="86400">every day</option>
+                                <option value="604800">every week</option>
+                                <option value="1209600">every 2 weeks</option>
+                                <option value="1814400">every 3 weeks</option>
+                                <option value="2592000">every month</option>
+                                <option value="5184000">every 2 months</option>
+                                <option value="7776000">every 3 months</option>
+                                <option value="15552000">every 6 months</option>
+                                <option value="31104000">every year</option>
                             </select><br/>
-                            <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="0" min="0" max="365" step="1" data-bind="enabled: scheduled" /><br/>
+                            <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="1" min="0" max="365" step="1" data-bind="enabled: scheduled" /><br/>
                             <br/>
                             <p>Your local timezone is detected automatically and is used to deliver messages.</p>
                             <input type="submit" name="btn_send_to_group" id="btn_send_to_group" class="button-primary" value="SEND" /><span class="sendToGroupProgress"><img src="<?php echo $params->cdnurl ?>/wp-includes/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Sending...</p></span>
@@ -110,12 +111,21 @@ wp_enqueue_script('settings-controller');
                 <p>File must be in CSV format.  <a href="http://smsify.s3.amazonaws.com/wp-content/uploads/2012/05/csv_sample.csv" title="Sample CSV format">You can download a sample CSV file</a>.</p>
                 </div>
             </div>
+            <div class="content-item-50">
+                <br/>
+                <div id="myschedules" class="k-content absConf">
+                    <div class="k-block k-shadow">    
+                    <strong>Remember to click "Save Changes" button and wait for a few seconds to apply your changes!</strong>
+                    <div id="schedulesgrid"></div>
+                </div>
+               </div>
+            </div>
         </div><!-- .smsify-content (end) -->
     </div><!-- inner (end) -->
 </div><!-- #content (end) -->
 <script type="text/x-kendo-template" id="smsTemplate">
     <div id="quicksendPopup" style="margin-right:10px;">
-        <div class="quicksendSuccess k-block k-success-colored"><p>Your message has been added to the delivery queue successfully.<br/>You can see your activity charts by clicking on 'Activity Charts' menu.</a></div>
+        <div class="quicksendSuccess k-block k-success-colored"><p>Your message has been added to the delivery queue successfully.<br/>Your credit(s) will be deducted after SMS has been sent successfully.</a></div>
         <div id="quicksendContainer">   
             <strong>#= first_name # #= last_name # - <em>#= mobile_number #</em></strong>
             <br/><br/>
@@ -126,19 +136,19 @@ wp_enqueue_script('settings-controller');
                 <label for="schedule-quick">Schedule: </label><input type="checkbox" id="schedule-quick" data-bind="checked: scheduled" /><br/> 
                 <label for="scheduleDatePicker-quick">Select date:</label><input id="scheduleDatePicker-quick" data-bind="enabled: scheduled" style="width:150px;"/><br/>
                 <label for="scheduleTimePicker-quick">Select time:</label><input id="scheduleTimePicker-quick" data-bind="enabled: scheduled" style="width:150px;"/><br/>
-                <label for="run_every-quick">Run every:</label><select id="run_every-quick" data-bind="enabled: scheduled" style="width:150px;>
-                                <option value="0">Run once</option>
-                                <option value="86400">Day</option>
-                                <option value="604800">Week</option>
-                                <option value="1209600">2 Weeks</option>
-                                <option value="1814400">3 Weeks</option>
-                                <option value="2592000">Month</option>
-                                <option value="5184000">2 Months</option>
-                                <option value="7776000">3 Months</option>
-                                <option value="15552000">6 Months</option>
-                                <option value="31104000">Year</option>
+                <label for="run_every-quick">Run:</label><select id="run_every-quick" data-bind="enabled: scheduled" style="width:150px;">
+                                <option value="0">once</option>
+                                <option value="86400">every day</option>
+                                <option value="604800">every week</option>
+                                <option value="1209600">every 2 weeks</option>
+                                <option value="1814400">every 3 weeks</option>
+                                <option value="2592000">every month</option>
+                                <option value="5184000">every 2 months</option>
+                                <option value="7776000">every 3 months</option>
+                                <option value="15552000">every 6 months</option>
+                                <option value="31104000">every year</option>
                             </select><br/>
-                <label for="run_times-quick">Run times (0 = forever):</label><input id="run_times-quick" type="number" value="0" min="0" max="365" step="1" data-bind="enabled: scheduled" style="width:150px;" /><br/>
+                <label for="run_times-quick">Run times (0 = forever):</label><input id="run_times-quick" type="number" value="1" min="0" max="365" step="1" data-bind="enabled: scheduled" style="width:150px;" /><br/>
                 <br/>
                 <p>Your local timezone is used to deliver messages.</p>
                 <p align="right"><button class="k-button btn_send_to_number" id="btn_send_to_number">SEND</button></p>

@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 2.0.0
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,12 @@ Full list of features:
 9. 24 hour Activity Chart
 
 == Changelog ==
+= 3.0.0 =
+* Add support for powerful recurring SMS schedules.
+* Ability to cancel existing schedules
+* minor UI improvements.
+* performance improvements
+
 = 2.0.0 =
 * Add option to obtain API Key in the modal window without redirecting to SMSify Website.
 * Add option to purchase credits in the modal window without redirecting to SMSify Website.

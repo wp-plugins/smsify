@@ -68,7 +68,7 @@ label {
 #key-form {margin-top: 30px;}
 #sendSMStoGroup label {
 	display: inline-block;
-    width: 300px;
+    width: 600px;
     text-align: left;
 }
 #sendToGroupContainer {
@@ -93,12 +93,13 @@ label {
 	position: absolute;
 }
 #sms-group-container {
-	height: 480px;	
+	height: 520px;	
+	max-width: 650px;
 }
 #schedule-container {
 	height: 200px;
 	width: 300px;
-	padding-top: 20px;
+	padding-top: 50px;
 	float: left;
 }
 #schedule-container label {

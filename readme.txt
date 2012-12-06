@@ -47,6 +47,7 @@ Full list of features:
 7. This example sends a personalised scheduled message to multiple contacts.
 8. Monthly Activity Chart illustrating you SMS activity
 9. 24 hour Activity Chart
+10. Details of all active scheduled tasks. You can delete them from here if you need to.
 
 == Changelog ==
 = 3.0.0 =

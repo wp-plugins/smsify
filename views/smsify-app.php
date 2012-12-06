@@ -7,7 +7,8 @@ if(!$credits && $_SERVER['SERVER_NAME'] == $params->apihost) {
     echo "<script>location.href = '/pricing';</script>";
     exit;
 }
-echo '<script>var apiEndpoint = "' . $params->apiEndpoint . '";var api_key = "' . $params->api_key . '";</script>';    
+echo '<script>var apiEndpoint = "' . $params->apiEndpoint . '";var api_key = "' . $params->api_key . '";</script>';
+echo '<script>var existing_app_user = true;</script>';
 wp_enqueue_style('kendo-default');
 wp_enqueue_style('kendo-common');
 wp_enqueue_style('smsify');

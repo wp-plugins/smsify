@@ -2,15 +2,15 @@
 Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
-Tested up to: 3.4.2
-Stable tag: 3.0.0
+Tested up to: 3.5.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 SMSify is a free WordPress plugin that allows you to <strong>send personalised SMS messages</strong> to a large number of contacts very quickly.
 
 == Description ==
-SMSify is a premium bulk SMS provider that uses the latest web technologies.  This plugin adds no additional load on your server and it does not modify your databse. We do all the grunt work for you behind the scenes. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule messages</strong>.  It features a beautiful AJAX user interface that is very simple to use. Screenshots available. Due to the cross-domain restrictions in Internet Explorer, this plugin works best in modern browsers such as: Google Chrome, Firefox and Safari. For other broswsers, we recommend using the app on www.smsify.com.au Website.
+SMSify is a premium bulk SMS provider that uses the latest web technologies.  This plugin adds no additional load on your server and it does not modify your databse. We do all the grunt work for you behind the scenes. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule recurring messages</strong>.  It features a beautiful AJAX user interface that is very simple to use. Screenshots available. Due to the cross-domain restrictions in Internet Explorer, this plugin works best in modern browsers such as: Google Chrome, Firefox and Safari. For other broswsers, we recommend using the app on www.smsify.com.au Website.
 
 Full list of features:
 
@@ -18,8 +18,7 @@ Full list of features:
 *	Contact groups
 *	Import contacts
 *	Personalised messages - use {first_name} {last_name} to auto-insert personal data
-*	Scheduled messages
-*	Custom Sender IDs - Conditions apply
+*	Recurring scheduled messages
 *	Sophisticated admin dashboard
 *	Activity Charts
 *   Video Installation Guides
@@ -50,6 +49,9 @@ Full list of features:
 10. Details of all active scheduled tasks. You can delete them from here if you need to.
 
 == Changelog ==
+= 3.0.1 =
+* WordPress 3.5 compatibility release
+
 = 3.0.0 =
 * Add support for powerful recurring SMS schedules.
 * Ability to cancel existing schedules

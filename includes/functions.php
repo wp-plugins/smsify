@@ -5,10 +5,10 @@ function smsify_getConfig() {
     global $params;
     global $current_user;
     $params = new stdClass();
-    $params->appVersion = '3.0.1';
+    $params->appVersion = '3.0.2';
     $params->api_key = get_user_meta($current_user->ID, 'smsify-api-key', true);
     $params->apihost = 'www.smsify.com.au';
-    $params->cdnurl = 'https://' . $params->apihost;
+    $params->cdnurl = 'https://d2c8ezxpvufza0.cloudfront.net';
     $params->apiEndpoint = 'https://' . $params->apihost;
     $params->cssurl = '/' . PLUGINDIR . '/smsify/css';
     $params->jsurl = '/' . PLUGINDIR . '/smsify/js';
@@ -16,7 +16,7 @@ function smsify_getConfig() {
     $params->smsifydir = $_SERVER["DOCUMENT_ROOT"] . '/' . PLUGINDIR . '/smsify';
     
     wp_register_script('kendo-all', 
-                        $params->cdnurl . '/wp-includes/js/kendo/min/kendo.all.min.js', 
+                        $params->cdnurl . '/js/kendo/min/kendo.all.min.js', 
                         array(), 
                         $params->appVersion);
     wp_register_script('smsify-common', 
@@ -32,12 +32,12 @@ function smsify_getConfig() {
                         array('kendo-all'), 
                         $params->appVersion);
     wp_register_style('kendo-default', 
-                        $params->cdnurl . '/wp-includes/css/kendo/kendo.default.min.css', 
+                        $params->cdnurl . '/css/kendo/kendo.default.min.css', 
                         array(), 
                         $params->appVersion,
                         'all');
     wp_register_style('kendo-common', 
-                        $params->cdnurl . '/wp-includes/css/kendo/kendo.common.min.css', 
+                        $params->cdnurl . '/css/kendo/kendo.common.min.css', 
                         array(), 
                         $params->appVersion,
                         'all');

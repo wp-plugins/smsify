@@ -23,7 +23,7 @@ wp_enqueue_script('settings-controller');
 <h2 class="smsify-app-title">Send SMS</h2>
 <!-- CONTENT (start) -->
 <div id="content" role="main"<?php if(!$credits) echo ' style="display:none;"' ?>>
-    <div id="smsify-loading"><img src="<?php echo $params->cdnurl ?>/wp-includes/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Loading SMSify</p></div>
+    <div id="smsify-loading"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Loading SMSify</p></div>
     <div class="inner k-content smsify-main-app" style="display:none;">
         <ul id="smsifymenu">
             <li class="item-0">My Contacts</li>
@@ -79,7 +79,7 @@ wp_enqueue_script('settings-controller');
                             <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="1" min="0" max="365" step="1" data-bind="enabled: scheduled" /><br/>
                             <br/>
                             <p>Your local timezone is detected automatically and is used to deliver messages.</p>
-                            <input type="submit" name="btn_send_to_group" id="btn_send_to_group" class="button-primary" value="SEND" /><span class="sendToGroupProgress"><img src="<?php echo $params->cdnurl ?>/wp-includes/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Sending...</p></span>
+                            <input type="submit" name="btn_send_to_group" id="btn_send_to_group" class="button-primary" value="SEND" /><span class="sendToGroupProgress"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Sending...</p></span>
                         </div>
                     </form>
                 </div>
@@ -155,7 +155,7 @@ wp_enqueue_script('settings-controller');
                 <p align="right"><button class="k-button btn_send_to_number" id="btn_send_to_number">SEND</button></p>
             </div>
         </div>
-        <div id="quicksendProgress"><img src="<?php echo $params->cdnurl ?>/wp-includes/css/kendo/Default/loading-image.gif" alt="loading…" /><p>Sending…<br/>Please wait</p></div>            
+        <div id="quicksendProgress"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="loading…" /><p>Sending…<br/>Please wait</p></div>            
     </div>
 </script>
 <!-- CONTENT (end) -->

@@ -5,7 +5,7 @@ function smsify_getConfig() {
     global $params;
     global $current_user;
     $params = new stdClass();
-    $params->appVersion = '3.0.2';
+    $params->appVersion = '3.0.3';
     $params->api_key = get_user_meta($current_user->ID, 'smsify-api-key', true);
     $params->apihost = 'www.smsify.com.au';
     $params->cdnurl = 'https://d2c8ezxpvufza0.cloudfront.net';
@@ -32,7 +32,7 @@ function smsify_getConfig() {
                         array('kendo-all'), 
                         $params->appVersion);
     wp_register_style('kendo-default', 
-                        $params->cdnurl . '/css/kendo/kendo.default.min.css', 
+                        $params->cdnurl . '/css/kendo/kendo.bootstrap.min.css', 
                         array(), 
                         $params->appVersion,
                         'all');

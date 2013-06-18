@@ -35,7 +35,8 @@ wp_enqueue_script('settings-controller');
         </ul>
         <div class="smsify-content">
             <div class="content-item-0">
-                <div class="k-block k-shadow">    
+                <div class="k-block k-shadow">   
+                    <strong>Remember to click "Save Changes" button and wait for a few seconds to apply your changes!</strong> 
                     <div id="contactsgrid"></div>
                     <div id="quicksendPopup"></div>
                 </div>
@@ -109,16 +110,15 @@ wp_enqueue_script('settings-controller');
                         </li>    
                     </ul>
                 </form>
-                <p>File must be in CSV format.  <a href="http://smsify.s3.amazonaws.com/wp-content/uploads/2012/05/csv_sample.csv" title="Sample CSV format">You can download a sample CSV file</a>.</p>
+                <p>File must be in CSV format. Column values are read in the following order: Mobile, First Name, Last Name, Email.  <a href="//d2c8ezxpvufza0.cloudfront.net/wp-content/uploads/2012/05/csv_sample.csv" title="Sample CSV format">You can download a sample CSV file here</a>.</p>
                 </div>
             </div>
             <div class="content-item-50">
-                <br/>
                 <div id="myschedules" class="k-content absConf">
                     <div class="k-block k-shadow">    
-                    <strong>Remember to click "Save Changes" button and wait for a few seconds to apply your changes!</strong>
-                    <div id="schedulesgrid"></div>
-                </div>
+                        <strong>Remember to click "Save Changes" button and wait for a few seconds to apply your changes!</strong>
+                        <div id="schedulesgrid"></div>
+                    </div>
                </div>
             </div>
         </div><!-- .smsify-content (end) -->

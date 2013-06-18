@@ -27,6 +27,10 @@ Full list of features:
 *	No contracts, no setup fees, no tricks
 *	Easy SMS credit structure (1 credit = 1 SMS)
 
+== Requirements ==
+*	PHP5 Curl extension must be enabled on your server. Contact your server administrator or hosting company if you don't have PHP Curl extension enabled.
+*	Modern web browser such as Google Chrome, Firefox and Safari.
+
 == Installation ==
 *	Upload `smsify` folder to the `/wp-content/plugins/` directory
 *	Activate the plugin through the 'Plugins' menu in WordPress
@@ -53,6 +57,7 @@ Full list of features:
 * Add Email address to contact details
 * Implement Twitter Bootstrap CSS
 * WordPress 3.6 compatibility release
+* Add requiremnts section in the readme file
 
 = 3.0.2 =
 * Load core JS files from CDN

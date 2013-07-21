@@ -59,7 +59,7 @@ if(strlen($apiKeyOption)) {
                                             <a class="k-button k-button-icontext k-grid-edit-changes smsify-edit-key" href="#"><span class="k-icon k-edit"></span>Edit</a>
                                         </span>
                                     <?php } ?>
-                                    <span class="api-key-saving"><img src="<?php echo $params->cdnurl ?>/wp-includes/css/kendo/Default/loading-image.gif" alt="saving..." /></span>
+                                    <span class="api-key-saving"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="saving..." /></span>
                                 </fieldset>
                             </form>
                         </div>

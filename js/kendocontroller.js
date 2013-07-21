@@ -82,7 +82,7 @@ $ = jQuery, $(document).ready(function () {
     function i(e, t, n) {
         $("#quicksendProgress").hide();
         var r = $.parseJSON(e);
-        r.status ? $(".quicksendSuccess").show() : ($("#quicksendContainer").show(), alert(r.m)), r.d && smsifyUpdateCredits(r.d), m.read(), g.read(), w.read()
+        r.status ? $(".quicksendSuccess").show() : ($("#quicksendContainer").show(), alert(r.message)), r.d && smsifyUpdateCredits(r.d), m.read(), g.read(), w.read()
     }
 
     function s(e) {
@@ -114,10 +114,10 @@ $ = jQuery, $(document).ready(function () {
         })
     }
 
-    function c(e) {
+    function onGroupSuccess(e) {
         $(".sendToGroupProgress").hide(), $("#btn_send_to_group").show();
         var t = $.parseJSON(e);
-        t.status ? $(".sendToGroupSuccess").show() : alert(t.m), t.d && smsifyUpdateCredits(t.d), m.read(), g.read(), w.read()
+        t.status ? $(".sendToGroupSuccess").show() : alert(t.message), t.d && smsifyUpdateCredits(t.d), m.read(), g.read(), w.read()
     }
 
     function h(e) {
@@ -145,7 +145,7 @@ $ = jQuery, $(document).ready(function () {
         var t = $.parseJSON(e.responseText);
         t.s ? alert("Your task(s) have been cancelled successfully!") : alert(t.m), w.read()
     }
-    var e = "v5.0.3",
+    var e = "latest",
         m = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -651,7 +651,7 @@ $ = jQuery, $(document).ready(function () {
                 url: apiEndpoint + "/transport/",
                 type: "POST",
                 data: n,
-                success: c,
+                success: onGroupSuccess,
                 error: h
             })
         }

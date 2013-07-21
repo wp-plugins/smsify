@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Full list of features:
 10. Details of all active scheduled tasks. You can delete them from here if you need to.
 
 == Changelog ==
+= 3.0.4 =
+* Added alert messages for scheduled SMS.
+
 = 3.0.3 =
 * Add Email address to contact details
 * Implement Twitter Bootstrap CSS

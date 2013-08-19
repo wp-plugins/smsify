@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 3.0.5
+Stable tag: 3.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,8 @@ Full list of features:
 *	Contact groups
 *	Import contacts
 *	Personalised messages - use {first_name} {last_name} to auto-insert personal data
-*	Recurring scheduled messages
+*	Scheduled messages
+*	Birthday messages
 *	Sophisticated admin dashboard
 *	Activity Charts
 *   Video Installation Guides
@@ -53,6 +54,10 @@ Full list of features:
 10. Details of all active scheduled tasks. You can delete them from here if you need to.
 
 == Changelog ==
+= 3.0.6 =
+* Add Birthday metadata to allow Birthday SMS to be sent
+* Performance improvements
+
 = 3.0.5 =
 * Remove unnecessary unminified JS.
 

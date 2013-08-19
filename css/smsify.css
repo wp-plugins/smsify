@@ -64,7 +64,7 @@ label {
 	padding-left: 20px;
 	padding-bottom: 20px;
 }
-#key-form {height: 145px;}
+#key-form {height: 100px;}
 #key-form {margin-top: 30px;}
 #sendSMStoGroup label {
 	display: inline-block;
@@ -128,7 +128,7 @@ label {
 .smsify-api-container .smsify-error {background-color: #ffebe8; color:#000; border: solid 1px #c00; padding:2px; border-radius:3px;}
 .smsify-api-container .smsify-success {background-color: #f0fff0; padding:2px; border: solid 1px #d0dfd0; height:40px; border-radius:3px;}
 .postbox .inside .smsify-logo {float:right; height:48px;width:48px;background: url(../images/logo.png) no-repeat right;}
-.smsify-error {height:50px;}
+.smsify-error {min-height:50px;}
 #smsifymenu{height:27px;}
 .smsify-formrow {padding: 5px;}
 .smsify-formrow #csvfile{padding-left: 15px;}

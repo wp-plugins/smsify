@@ -1,12 +1,26 @@
 <?php
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
     exit ("Do not access this file directly.");
-$credits = smsify_checkCredits();
+wp_enqueue_style('kendo-common');
+wp_enqueue_style('kendo-default');
+wp_enqueue_style('smsify');
+wp_enqueue_script('settings-controller');
+
+$credits = 0;
+if(smsify_ping()) {
+    $credits = smsify_checkCredits();
+}
 $groups = array();
 if($credits) {
     $groups = json_decode(trim(file_get_contents($params->apiEndpoint . '/transport/?method=getGroups&key=' . $params->api_key)));
 }
-wp_enqueue_style('smsify');
+
+if($credits) {
+    echo '<script>var existing_app_user = true;</script>';
+} else {
+    echo '<script>var existing_app_user = false;</script>';
+}
+
 $errorMessage = "";
 $successMessage = "";
 if (!extension_loaded('curl')) {
@@ -50,9 +64,11 @@ if(isset($_FILES['csvfile']['tmp_name'])) {
     curl_close ($ch);
 }
 ?>
+<div id="smsifywindow2"></div>
 <div class="wrap columns-2 dd-wrap">
     <div id="icon-users" class="icon32 icon32-posts-page"><br /></div>
     <h2>SMSify - Import Users</h2>
+    <?php if(!$credits && $_SERVER['SERVER_NAME'] != $params->apihost) smsify_show_error() ?>
     <div id="poststuff" class="metabox-holder has-right-sidebar">
         <?php include('smsify-sidebar.php'); ?>
         <div class="post-body"<?php if(!$credits) echo ' style="display:none;"' ?>>

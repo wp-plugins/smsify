@@ -377,6 +377,14 @@ $ = jQuery, $(document).ready(function () {
                         },
                         email: {
                             type: "email"
+                        },
+                        dob: {
+                            validation: {
+                            	pattern: {
+                            		value: "[0-9]{4}-[0-9]{2}-[0-9]{2}",
+                            		message: "Date must be in yyyy-mm-dd format"
+                            	}
+                            }
                         }
                     }
                 }
@@ -415,7 +423,11 @@ $ = jQuery, $(document).ready(function () {
             }, {
                 field: "email",
                 title: "Email",
-                width: 165
+                width: 140
+            }, {
+                field: "dob",
+                title: "Birthday",
+                width: 90
             }, {
                 command: {
                     text: "Quicksend",
@@ -427,11 +439,12 @@ $ = jQuery, $(document).ready(function () {
             }, {
                 command: "destroy",
                 title: " ",
-                width: 105,
+                width: 90,
                 filterable: !1
             }],
             editable: !0
         }).data("kendoGrid");
+        
     wnd = $("#quicksendPopup").kendoWindow({
         title: "Quicksend SMS",
         modal: !0,

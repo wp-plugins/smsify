@@ -5,8 +5,8 @@ function smsify_getConfig() {
     global $params;
     global $current_user;
     $params = new stdClass();
-    $params->appVersion = '3.0.5';
-    $params->api_key = get_user_meta($current_user->ID, 'smsify-api-key', true);
+    $params->appVersion = '3.0.7';
+    $params->api_key = get_site_option('smsify-api-key', false);
     $params->apihost = 'www.smsify.com.au';
     $params->cdnurl = 'https://d2c8ezxpvufza0.cloudfront.net';
     $params->apiEndpoint = 'https://' . $params->apihost;
@@ -16,7 +16,7 @@ function smsify_getConfig() {
     $params->smsifydir = $_SERVER["DOCUMENT_ROOT"] . '/' . PLUGINDIR . '/smsify';
     
     wp_register_script('kendo-all', 
-                        $params->cdnurl . '/js/kendo/min/kendo.all.min.js', 
+                        $params->cdnurl . '/js/kendo/min/1.0.0/kendo.all.min.js', 
                         array(), 
                         $params->appVersion);
     wp_register_script('smsify-common', 
@@ -32,12 +32,12 @@ function smsify_getConfig() {
                         array('kendo-all'), 
                         $params->appVersion);
     wp_register_style('kendo-default', 
-                        $params->cdnurl . '/css/kendo/kendo.bootstrap.min.css', 
+                        $params->cdnurl . '/css/kendo/1.0.0/kendo.bootstrap.min.css', 
                         array(), 
                         $params->appVersion,
                         'all');
     wp_register_style('kendo-common', 
-                        $params->cdnurl . '/css/kendo/kendo.common.min.css', 
+                        $params->cdnurl . '/css/kendo/1.0.0/kendo.common.min.css', 
                         array(), 
                         $params->appVersion,
                         'all');
@@ -49,15 +49,38 @@ function smsify_getConfig() {
     return $params;
 }
 
+function smsify_ping() {
+    global $params;
+    $ping = @file_get_contents($params->apiEndpoint . '/transport/?method=ping&key=' . $params->api_key . '&version=latest');
+    return $ping;
+}
+
 function smsify_checkCredits() {
 	global $params;
-	// Get credits for this user and check that API key is good
-    if(!$credits = intval(trim(file_get_contents($params->apiEndpoint . '/transport/?method=getCreditsRaw&key=' . $params->api_key . '&version=latest')))) {
-        // If another wordpress site using this plugin
-        if($_SERVER['SERVER_NAME'] != $params->apihost) {    
-            echo "<div class='error smsify-error'>We seem to have a little problem. Please check that you: <a href='admin.php?page=wp-smsify-settings'><br/>1. have entered the correct SMSify API Key on the Settings page.</a><br/>2. have enough credits to send at least one SMS. You can purchase more credits on <a href='http://www.smsify.com.au/pricing' target='_blank' title='Purchase SMSify credits'>SMSify website</a></div>";    
-    	}
-    }
+	// Get credits for this user.
+    $credits = intval(trim(file_get_contents($params->apiEndpoint . '/transport/?method=getCreditsRaw&key=' . $params->api_key . '&version=latest')));
+
 	return $credits;
+}
+
+function smsify_show_error($is_settings_page=false) {
+    echo '<div class="error smsify-error" style="max-width:550px;float:left;">';
+    echo '<p>You don\'t seem to have any SMS credits on your account.</p>'; 
+    echo '<p>If this is your first time using SMSify, get your API key by creating an SMSify account on <a href="http://www.smsify.com.au/?ref=wp" target="_blank" title="SMSify - Get your message accross">www.smsify.com.au</a> or by clicking the button below.</p>'; 
+    echo '<p>If you already have your SMSify key, make sure it is correct and that you have enough credits on your account.</p>';
+    echo '<p>&nbsp;</p>';
+    echo '<div class="smsify-key-button">';
+    echo '<a href="#" class="k-button" id="smsify-get-key">GET YOUR API KEY HERE</a>';
+    echo '</div>';
+    if(!$is_settings_page) {
+        echo '<h2>OR</h2>';
+        echo '<div class="smsify-key-button">';
+        echo '<a href="admin.php?page=wp-smsify-settings" class="k-button" id="smsify-get-key">';
+        echo 'ENTER YOUR API KEY HERE';
+        echo '</a>';
+        echo '</div>';
+    }
+    echo '<p>&nbsp;</p>';
+    echo '</div>';
 }	
 ?>

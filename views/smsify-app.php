@@ -1,12 +1,11 @@
 <?php if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
     exit ("Do not access this file directly.");
 
-$credits = smsify_checkCredits();
-// If on SMSify site and no credits left
-if(!$credits && $_SERVER['SERVER_NAME'] == $params->apihost) {
-    echo "<script>location.href = '/pricing';</script>";
-    exit;
+$credits = 0;
+if(smsify_ping()) {
+    $credits = smsify_checkCredits();
 }
+
 echo '<script>var apiEndpoint = "' . $params->apiEndpoint . '";var api_key = "' . $params->api_key . '";</script>';
 echo '<script>var existing_app_user = true;</script>';
 wp_enqueue_style('kendo-default');
@@ -19,9 +18,11 @@ wp_enqueue_script('settings-controller');
 ?>
 <script>var smsifyCredits = <?php echo($credits) ?>;</script>
 <div id="smsifywindow"></div>
+<div id="smsifywindow2"></div>
 <div id="icon-edit-comments" class="icon32"><br /></div>
 <h2 class="smsify-app-title">Send SMS</h2>
 <!-- CONTENT (start) -->
+<?php if(!$credits && $_SERVER['SERVER_NAME'] != $params->apihost) smsify_show_error() ?>    
 <div id="content" role="main"<?php if(!$credits) echo ' style="display:none;"' ?>>
     <div id="smsify-loading"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Loading SMSify</p></div>
     <div class="inner k-content smsify-main-app" style="display:none;">

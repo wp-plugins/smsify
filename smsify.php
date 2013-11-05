@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright: © 2012
+ * Copyright: © 2013
  * {@link http://www.smsify.com.au/ SMSify.}
  * ( coded in the Australia )
  *
@@ -11,14 +11,14 @@
  * If not, see: {@link http://www.gnu.org/licenses/}. 
  *
  * @package SMSify
- * @version 3.0.5
+ * @version 3.0.7
  */
 /*
 Plugin Name: SMSify
 Plugin URI: http://www.smsify.com.au/smsify-wordpress-plugin/
 Description: SMSify is a free WordPress plugin that allows you to <strong>send personalised SMS messages</strong> to a large number of contacts very quickly. You can also <strong>import contacts</strong> from a csv file and <strong>schedule messages</strong>.  Beautiful user interface and very simple to use. Screenshots available.
 Author: SMSify
-Version: 3.0.5
+Version: 3.0.7
 Author URI: http://www.smsify.com.au/
 */
 if(realpath(__FILE__) === realpath($_SERVER["SCRIPT_FILENAME"]))
@@ -27,12 +27,15 @@ if(realpath(__FILE__) === realpath($_SERVER["SCRIPT_FILENAME"]))
 require'includes/functions.php';
 add_action( 'admin_menu', 'smsify_menu' );
 function smsify_menu() {
+	$smsify_inbound_enabled = get_site_option('smsify-inbound-sms-enabled', false);
 	$page = add_menu_page( 'SMSify - bulk SMS delivery', 'SMSify', 'manage_options', 'wp-smsify-videoguides', null, '/wp-content/plugins/smsify/images/favicon.ico' );
 	$page_videoguides = add_submenu_page( 'wp-smsify-videoguides', 'SMSify Video Guides', 'Video Guides', 'manage_options', 'wp-smsify-videoguides', 'smsify_plugin_videoguides');
 	$page_setup = add_submenu_page( 'wp-smsify-videoguides', 'Settings', 'Settings', 'manage_options', 'wp-smsify-settings', 'smsify_plugin_settings');
 	$page_app = add_submenu_page( 'wp-smsify-videoguides', 'SMSify', 'Send SMS', 'manage_options', 'wp-smsify-app', 'smsify_plugin_app');
     $page_import = add_submenu_page( 'wp-smsify-videoguides', 'SMSify', 'Bulk Import', 'manage_options', 'wp-smsify-import', 'smsify_bulk_import');
-    	
+    if($smsify_inbound_enabled) {    
+        $page_inbound_sms = add_submenu_page( 'wp-smsify-videoguides', 'SMSify', 'Inbound SMS', 'manage_options', 'wp-smsify-inbound', 'smsify_inbound_sms');
+    }
 }
 function smsify_plugin_videoguides() {
 	if ( !current_user_can( 'manage_options' ) )  {
@@ -63,5 +66,12 @@ function smsify_bulk_import() {
     }
     $params = smsify_getConfig();
     require 'views/smsify-import.php';
+}
+function smsify_inbound_sms() {
+    if ( !current_user_can( 'manage_options' ) )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+    }
+    $params = smsify_getConfig();
+    require 'views/smsify-inbound-sms.php';
 }
 ?>

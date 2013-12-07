@@ -205,9 +205,9 @@ $ = jQuery, $(document).ready(function () {
         pageSize: 10,
         schema: {
             model: {
-                id: "remote_task_id",
+                id: "local_task_id",
                 fields: {
-                    remote_task_id: {
+                    local_task_id: {
                         editable: !1,
                         type: "string"
                     },

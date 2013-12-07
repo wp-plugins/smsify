@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.7.1
-Stable tag: 3.0.7
+Stable tag: 3.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,9 @@ Full list of features:
 10. Details of all active scheduled tasks. You can delete them from here if you need to.
 
 == Changelog ==
+= 3.0.8 =
+* Improve SMS scheduling functionality.
+
 = 3.0.7 =
 * WordPress 3.7 compatibility release
 

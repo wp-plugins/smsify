@@ -5,7 +5,7 @@ function smsify_getConfig() {
     global $params;
     global $current_user;
     $params = new stdClass();
-    $params->appVersion = '3.0.7';
+    $params->appVersion = '3.0.8';
     $params->api_key = get_site_option('smsify-api-key', false);
     $params->apihost = 'www.smsify.com.au';
     $params->cdnurl = 'https://d2c8ezxpvufza0.cloudfront.net';

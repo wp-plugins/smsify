@@ -78,7 +78,7 @@ wp_enqueue_script('settings-controller');
                                 <option value="15552000">every 6 months</option>
                                 <option value="31104000">every year</option>
                             </select><br/>
-                            <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="1" min="0" max="365" step="1" data-bind="enabled: scheduled" /><br/>
+                            <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="1" min="0" max="31" step="1" data-bind="enabled: scheduled" /><br/>
                             <br/>
                             <p>Your local timezone is detected automatically and is used to deliver messages.</p>
                             <input type="submit" name="btn_send_to_group" id="btn_send_to_group" class="button-primary" value="SEND" /><span class="sendToGroupProgress"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Sending...</p></span>
@@ -150,7 +150,7 @@ wp_enqueue_script('settings-controller');
                                 <option value="15552000">every 6 months</option>
                                 <option value="31104000">every year</option>
                             </select><br/>
-                <label for="run_times-quick">Run times (0 = forever):</label><input id="run_times-quick" type="number" value="1" min="0" max="365" step="1" data-bind="enabled: scheduled" style="width:150px;" /><br/>
+                <label for="run_times-quick">Run times (0 = forever):</label><input id="run_times-quick" type="number" value="1" min="0" max="31" step="1" data-bind="enabled: scheduled" style="width:150px;" /><br/>
                 <br/>
                 <p>Your local timezone is used to deliver messages.</p>
                 <p align="right"><button class="k-button btn_send_to_number" id="btn_send_to_number">SEND</button></p>

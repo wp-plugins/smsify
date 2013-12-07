@@ -1,12 +1,11 @@
 <?php if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
     exit ("Do not access this file directly.");
 
-$credits = smsify_checkCredits();
-// If on SMSify site and no credits left
-if(!$credits && $_SERVER['SERVER_NAME'] == $params->apihost) {
-    echo "<script>location.href = '/pricing';</script>";
-    exit;
+$credits = 0;
+if(smsify_ping()) {
+    $credits = smsify_checkCredits();
 }
+
 echo '<script>var apiEndpoint = "' . $params->apiEndpoint . '";var api_key = "' . $params->api_key . '";</script>';
 echo '<script>var existing_app_user = true;</script>';
 wp_enqueue_style('kendo-default');
@@ -19,9 +18,11 @@ wp_enqueue_script('settings-controller');
 ?>
 <script>var smsifyCredits = <?php echo($credits) ?>;</script>
 <div id="smsifywindow"></div>
+<div id="smsifywindow2"></div>
 <div id="icon-edit-comments" class="icon32"><br /></div>
 <h2 class="smsify-app-title">Send SMS</h2>
 <!-- CONTENT (start) -->
+<?php if(!$credits && $_SERVER['SERVER_NAME'] != $params->apihost) smsify_show_error() ?>    
 <div id="content" role="main"<?php if(!$credits) echo ' style="display:none;"' ?>>
     <div id="smsify-loading"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Loading SMSify</p></div>
     <div class="inner k-content smsify-main-app" style="display:none;">
@@ -77,7 +78,7 @@ wp_enqueue_script('settings-controller');
                                 <option value="15552000">every 6 months</option>
                                 <option value="31104000">every year</option>
                             </select><br/>
-                            <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="1" min="0" max="365" step="1" data-bind="enabled: scheduled" /><br/>
+                            <label for="run_times">Run times (0 = forever):</label><input id="run_times" type="number" value="1" min="0" max="31" step="1" data-bind="enabled: scheduled" /><br/>
                             <br/>
                             <p>Your local timezone is detected automatically and is used to deliver messages.</p>
                             <input type="submit" name="btn_send_to_group" id="btn_send_to_group" class="button-primary" value="SEND" /><span class="sendToGroupProgress"><img src="<?php echo $params->cdnurl ?>/css/kendo/Default/loading-image.gif" alt="loading..." /><p>Sending...</p></span>
@@ -149,7 +150,7 @@ wp_enqueue_script('settings-controller');
                                 <option value="15552000">every 6 months</option>
                                 <option value="31104000">every year</option>
                             </select><br/>
-                <label for="run_times-quick">Run times (0 = forever):</label><input id="run_times-quick" type="number" value="1" min="0" max="365" step="1" data-bind="enabled: scheduled" style="width:150px;" /><br/>
+                <label for="run_times-quick">Run times (0 = forever):</label><input id="run_times-quick" type="number" value="1" min="0" max="31" step="1" data-bind="enabled: scheduled" style="width:150px;" /><br/>
                 <br/>
                 <p>Your local timezone is used to deliver messages.</p>
                 <p align="right"><button class="k-button btn_send_to_number" id="btn_send_to_number">SEND</button></p>

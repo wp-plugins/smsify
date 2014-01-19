@@ -116,10 +116,5 @@ Full list of features:
 * SMSify was born
 
 == Upgrade Notice ==
-This is why you should upgrade: 
-*	SMSify plugin now adds Mobile Number custom field to your existing WordPress contacts. 
-*	SMSify plugin now sends SMS to your native WordPress contacts. 
-*	SMSify allows you to group your contacts by using a User Groups plugin. Then you can send SMS to everyone in that group at once. 
-*	Added support for 2-way SMS.
-*	Added support for special characters (UTF8).
-*	IMPORTANT: If you are upgrading SMSify plugin from version 3.0.8 or below, make sure you backup your existing contacts. They will no longer be accessible since SMSify v4.0.0 stores and sends SMS to your WordPress users.  
+Adding Mobile Number custom field to your existing WordPress contacts. Sending SMS to your native WordPress contacts. Added support for 2-way SMS. Added support for special characters (UTF8).
+IMPORTANT: If you are upgrading SMSify plugin from version 3.0.8 or below, make sure you backup your existing contacts. They will no longer be accessible since SMSify v4.0.0 stores and sends SMS to your WordPress users.  

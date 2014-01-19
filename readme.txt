@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SMSify is a free WordPress plugin that allows you to <strong>send personalised SMS messages</strong> to a large number of contacts very quickly.
 
 == Description ==
-SMSify is a premium bulk SMS provider that uses the latest web technologies.  This plugin adds no additional load on your server and it does not modify your databse. We do all the grunt work for you behind the scenes. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule recurring messages</strong>.  It features a beautiful AJAX user interface that is very simple to use. Screenshots available. Due to the cross-domain restrictions in Internet Explorer, this plugin works best in modern browsers such as: Google Chrome, Firefox and Safari. For other broswsers, we recommend using the app on www.smsify.com.au Website.
+SMSify is a premium SMS plugin that allows you to send and receive SMS within your own WordPress dashboard.  This plugin has been built with performance in mindr and it does not modify your databse. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.
 
 Full list of features:
 
@@ -19,39 +19,33 @@ Full list of features:
 *	Import contacts
 *	Personalised messages - use {first_name} {last_name} to auto-insert personal data
 *	Scheduled messages
-*	Birthday messages
-*	Sophisticated admin dashboard
-*	Activity Charts
-*   Video Installation Guides
-*	24/7 Email support
+*	View message responses
+*	Easy to use admin dashboard
+*	Useful reports
+*	Fanatic support
 *	Secure transmissions over SSL
-*	No contracts, no setup fees, no tricks
 *	Easy SMS credit structure (1 credit = 1 SMS)
 
 == Requirements ==
-*	PHP5 Curl extension must be enabled on your server. Contact your server administrator or hosting company if you don't have PHP Curl extension enabled.
-*	Modern web browser such as Google Chrome, Firefox and Safari.
+*	Modern web browser such as Google Chrome, Firefox, Safari or Internet Explorer 9+, 10 recommended.
 
 == Installation ==
 *	Upload `smsify` folder to the `/wp-content/plugins/` directory
 *	Activate the plugin through the 'Plugins' menu in WordPress
-*	Purchase SMS credits at [www.smsify.com.au](http://www.smsify.com.au "SMSify - web based bulk SMS service")
+*	Purchase SMS credits at [www.smsify.com.au](http://www.smsify.com.au "SMSify - SMS WordPress plugin")
 *	Enjoy!
 
 == Frequently Asked Questions ==
 *	For an up to date list of FAQs, please visit [http://www.smsify.com.au/faq-page/](http://www.smsify.com.au/faq-page/ "SMSify FAQ page")
 
 == Screenshots ==
-1. SMSify WordPress Admin menu
-2. Import contacts by uploading a csv file from you computer
-3. A powerful contacts grid with pagination and advanced filtering options
-4. Quicksend SMS modal window allowing you to quickly locate a contact a send an SMS
-5. Modify contacts directly in the grid and hit save.
-6. Easily create contact groups
-7. This example sends a personalised scheduled message to multiple contacts.
-8. Monthly Activity Chart illustrating you SMS activity
-9. 24 hour Activity Chart
-10. Details of all active scheduled tasks. You can delete them from here if you need to.
+1. SMSify Pro WordPress Admin menu
+2. Settings page where you enter your API key
+3. Contact Groups page
+4. Send SMS to your chosen contact group
+5. Send SMS to your chosen WordPress user
+6. Import contacts from a CSV file
+7. Usage report page
 
 == Changelog ==
 = 3.0.8 =
@@ -118,4 +112,5 @@ Full list of features:
 * SMSify was born
 
 == Upgrade Notice ==
-N/A
+This is why you should upgrade. SMSify plugin now adds Mobile Number custom field to your existing WordPress contacts. SMSify plugin now sends SMS to your native WordPress contacts. This plugin also allows you to group your contacts by using a User Groups plugin. Then you can send SMS to everyone in that group at once.
+IMPORTANT: If you are upgrading SMSify plugin from version 3.0.8 or below, make sure you backup your existing contacts. They will no longer be accessible since SMSify v4.0.0 stores and sends SMS to your WordPress users.  

@@ -1,4 +1,4 @@
-Copyright: © 2012 SMSify. ( coded in Australia )
+Copyright: © 2013 SMSify. ( coded in Australia )
 <mailto:support@smsify.com.au> <http://www.smsify.com.au/>
 
 Released under the terms of the GNU General Public License.
@@ -17,6 +17,3 @@ Credits / Additional Acknowledgments:
 * Readme parsing routines, powered (in part) by PHP Markdown.
 	- BSD / GPL Compatible License <http://michelf.com/projects/php-markdown/license/>
 	- PHP Markdown <http://michelf.com/projects/php-markdown/>
-
-* Telerik® Kendo UI, javascript files have been integrated into this software via external hyperlinks.
-  The files/services provided by Telerik® are not distributed with this software. They have their own terms & conditions.

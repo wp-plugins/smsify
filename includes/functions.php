@@ -30,7 +30,7 @@ function smsify_getConfig() {
                         $smsify_params->appVersion,
                         'all');
     wp_register_script('smsify-sms-controller', 
-                        $smsify_params->jsurl . '/sendsmscontroller.js', 
+                        $smsify_params->jsurl . '/sendsmscontroller.min.js', 
                         array('jquery', 'jquery-ui-core', 'jquery-ui-datepicker'), 
                         $smsify_params->appVersion);
                                                 

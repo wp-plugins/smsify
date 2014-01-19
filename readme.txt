@@ -50,7 +50,11 @@ Full list of features:
 
 == Changelog ==
 = 4.0.0 =
-* Complete rewrite. SMSify now adds Mobile Number custom field to your existing WordPress users. SMSify now sends SMS to your native WordPress users. We don't store your recipients details any more. There is a huge potential here for you to add many different custom fields, such as DOB, address and so on. We have added support for 2-way messaging. We have also added integration with User Groups plugin so that you can send SMS to a group at once.
+* Complete rewrite. 
+* Added Mobile Number custom field to your existing WordPress users. 
+* SMSify now sends SMS to your native WordPress users. We don't store your recipients details any more. There is a huge potential here for you to add many different custom fields, such as DOB, address and so on. 
+* Added support for 2-way messaging. 
+* Integration with User Groups plugin so that you can send SMS to a group at once.
 
 = 3.0.8 =
 * Improve SMS scheduling functionality.

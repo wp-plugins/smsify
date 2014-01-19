@@ -11,7 +11,7 @@
  * If not, see: {@link http://www.gnu.org/licenses/}. 
  *
  * @package SMSify
- * @version 1.0.0
+ * @version 4.0.0
  */
 /*
 Plugin Name: SMSify

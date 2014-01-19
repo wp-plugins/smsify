@@ -2,8 +2,8 @@
 Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
-Tested up to: 3.7.1
-Stable tag: 3.0.8
+Tested up to: 3.8.3
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ Full list of features:
 7. Usage report page
 
 == Changelog ==
+= 4.0.0 =
+* Complete rewrite. SMSify now adds Mobile Number custom field to your existing WordPress users. SMSify now sends SMS to your native WordPress users. We don't store your recipients details any more. There is a huge potential here for you to add many different custom fields, such as DOB, address and so on. We have added support for 2-way messaging. We have also added integration with User Groups plugin so that you can send SMS to a group at once.
+
 = 3.0.8 =
 * Improve SMS scheduling functionality.
 

@@ -16,9 +16,9 @@
 /*
 Plugin Name: SMSify
 Plugin URI: http://www.smsify.com.au/
-Description: <strong>SMSify</strong> has been built from scratch to replace the old <strong>SMSify</strong> plugin. SMSify has been architected to work seamlessly with future versions of WordPress, including multisite installations. You can <strong>send personalised SMS messages to your existing WordPress users and user groups</strong>. This plugin also includes <strong>csv import feature</strong> that allows you to bulk import users and allocate them to a group. You can create user groups and compose your SMS once, and then send that SMS to all contacts within the group. You can also <strong>schedule your SMS</strong> to be delivered at a later date and time.  
+Description: <strong>SMSify</strong> is a premium SMS plugin that allows you to <strong>send and receive SMS</strong> within your own WordPress dashboard. SMSify allows you to <strong>import contacts</strong> from a csv file and <strong>schedule SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.  
 Author: SMSify
-Version: 1.0.0
+Version: 4.0.0
 Author URI: http://www.smsify.com.au/
 */
 

@@ -117,4 +117,4 @@ Full list of features:
 
 == Upgrade Notice ==
 Adding Mobile Number custom field to your existing WordPress contacts. Sending SMS to your native WordPress contacts. Added support for 2-way SMS. Added support for special characters (UTF8).
-IMPORTANT: If you are upgrading SMSify plugin from version 3.0.8 or below, make sure you backup your existing contacts. They will no longer be accessible since SMSify v4.0.0 stores and sends SMS to your WordPress users.  
+IMPORTANT: If you are upgrading SMSify plugin from version 3.0.8 or below, make sure you backup your existing contacts. They will no longer be accessible since SMSify v4.0.0 stores and sends SMS to your WordPress users. For any questions, plese contact support@smsify.com.au  

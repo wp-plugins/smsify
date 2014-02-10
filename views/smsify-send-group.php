@@ -17,6 +17,15 @@
                         <span class="description"><?php _e("Maximum 160 characters."); ?><br/><?php _e("HINT: Use {first_name} {last_name} to insert personal details for each contact. For example, Dear {first_name} - would translate to: Dear John."); ?></span>
                     </td>
                 </tr>
+                <?php if(get_site_option('smsify-enable-sender-id-override')) : ?>
+                <tr>
+                    <th><label for="smsify_sender_id"><?php _e("Sender ID"); ?></label></th>
+                    <td>
+                        <input type="number" name="user-group[smsify-sender-id]" id="smsify_sender_id" value="<?php echo self::get_meta('smsify-sender-id'); ?>" class="regular-text" maxlength="15" /><br />
+                        <span class="description"><?php _e("If you purchased additional Sender ID(s), enter it here. Use this with caution. If your SenderID is incorrect, the message will not get delivered and you may be charged for SMS credit(s). Leave blank to use default Sender ID."); ?></span>
+                    </td>
+                </tr>
+                <?php endif; ?>
                  <tr>
                     <th><label for="smsify-scheduler"><?php _e("Schedule SMS"); ?></label></th>
                     <td><input type="checkbox" name="smsify-scheduler" id="smsify-scheduler" value="1" /></td>

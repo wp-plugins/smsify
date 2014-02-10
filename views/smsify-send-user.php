@@ -11,8 +11,8 @@
                 <tr>
                     <th><label for="smsify_mobile"><?php _e("Mobile number"); ?></label></th>
                     <td>
-                        <input type="text" name="smsify_mobile" id="smsify_mobile" value="<?php echo esc_attr( get_the_author_meta( 'smsify_mobile', $user->ID ) ); ?>" class="regular-text" maxlength="15" /><br />
-                        <span class="description"><?php _e("Please enter user's mobile number in international format.<br/> E.g. 61414111111, where 61 is a country code for Australia.<br/>Only numbers are allowed, no spaces please."); ?></span>
+                        <input type="number" name="smsify_mobile" id="smsify_mobile" value="<?php echo esc_attr( get_the_author_meta( 'smsify_mobile', $user->ID ) ); ?>" class="regular-text" maxlength="15" /><br />
+                        <span class="description"><?php _e("Please enter user's mobile number in international format.<br/> E.g. 61414111111, where 61 is a country code for Australia.<br/>Only numbers are allowed, no spaces or + signs please."); ?></span>
                     </td>
                 </tr>
                 <tr>
@@ -23,6 +23,15 @@
                         <span class="description"><?php _e("Maximum 160 characters."); ?></span>
                     </td>
                 </tr>
+                <?php if(get_site_option('smsify-enable-sender-id-override')) : ?>
+                <tr>
+                    <th><label for="smsify_sender_id"><?php _e("Sender ID"); ?></label></th>
+                    <td>
+                        <input type="number" name="smsify_sender_id" id="smsify_sender_id" value="<?php echo esc_attr( get_the_author_meta( 'smsify_sender_id', $user->ID ) ); ?>" class="regular-text" maxlength="15" /><br />
+                        <span class="description"><?php _e("If you purchased additional Sender ID(s), enter it here. Use this with caution. If your SenderID is incorrect, the message will not get delivered and you may be charged for SMS credit(s). Leave blank to use default Sender ID."); ?></span>
+                    </td>
+                </tr>
+                <?php endif; ?>
                 <tr>
                     <th><label for="smsify-scheduler"><?php _e("Schedule SMS"); ?></label></th>
                     <td><input type="checkbox" name="smsify-scheduler" id="smsify-scheduler" value="1" /></td>

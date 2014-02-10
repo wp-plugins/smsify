@@ -22,6 +22,8 @@ $(document).ready(function() {
 		var tag_id = $("#edittag").find('input[name="tag_ID"]').val();
 		var taxonomy = $("#edittag").find('input[name="taxonomy"]').val();
 		var message = $("#smsify_message").val();
+		var sender_id = $("#smsify_sender_id").val();
+		
 		var scheduler = $("#smsify-scheduler").prop("checked");
 		var schedule_date = $("#smsify-schedule-date").val();
 		var schedule_time = $("#smsify-schedule-time").val();
@@ -50,6 +52,10 @@ $(document).ready(function() {
 			"schedule_date_time": schedule_date_time,
 		};
 		
+		if(sender_id) {
+			smsifyData["sender_id"] = sender_id;
+		}
+		
 		if(confirm(confirmationMessage)) {
 			showSending();
 			$.ajax({
@@ -70,6 +76,7 @@ $(document).ready(function() {
 		var last_name = $("#last_name").val();
 		var mobile = $("#smsify_mobile").val();
 		var message = $("#smsify_message").val();
+		var sender_id = $("#smsify_sender_id").val();
 		var scheduler = $("#smsify-scheduler").prop("checked");
 		var schedule_date = $("#smsify-schedule-date").val();
 		var schedule_time = $("#smsify-schedule-time").val();
@@ -98,7 +105,10 @@ $(document).ready(function() {
 			"schedule_date_time": schedule_date_time,
 			"message": message
 		};
-
+		
+		if(sender_id) {
+			smsifyData["sender_id"] = sender_id;
+		}
 		$.ajax({
 		  url: ajaxurl,
 		  type: "POST",
@@ -149,4 +159,16 @@ $(document).ready(function() {
    	function addMinutes(date, minutes) {
 	    return new Date(date.getTime() + minutes*60000);
 	}
+	
 });
+
+function toggleAPIKey(e, val1, val2, val3, val4) {
+	e.preventDefault();
+	if($("#apiKey").val() == val1) {
+		$("#apiKey").attr("value",val2);
+		$("#smsify_toggle_key").html(val4);
+	} else {
+		$("#apiKey").attr("value",val1);
+		$("#smsify_toggle_key").html(val3);
+	}
+}

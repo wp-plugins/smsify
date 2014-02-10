@@ -49,6 +49,9 @@ Full list of features:
 7. Usage report page
 
 == Changelog ==
+= 4.1.1 =
+* Small readme file patch
+
 = 4.1.0 =
 * Added support for multiple Sender IDs
  

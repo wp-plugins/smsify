@@ -11,7 +11,7 @@
  * If not, see: {@link http://www.gnu.org/licenses/}. 
  *
  * @package SMSify
- * @version 1.0.0
+ * @version 4.0.0
  */
 /*
 Plugin Name: SMSify
@@ -43,9 +43,10 @@ function smsify_settings() {
         wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
     }
     $smsify_params = smsify_getConfig();
+    wp_enqueue_script('smsify-sms-controller');
     $validationMessage = "";
     $valid_key = false;
-
+    $smsify_enable_sender_id_override = false;
     if(isset($_POST['activate'])) {
         if(strlen(trim($_POST['apiKey'])) == 32) {
             $api_key = trim($_POST['apiKey']);
@@ -68,9 +69,31 @@ function smsify_settings() {
         }
     } else if(isset($_POST['deactivate'])) {
         delete_site_option('smsify-api-key');
+        delete_site_option('smsify_enable_sender_id_override');
         $validationMessage = __("Before you start using SMSify, please activate the plugin by pasting your API Key in the text field provided.");
+    } else if(isset($_POST['update'])) {
+        if(strlen($_POST['apiKey']) == 32) {
+            update_site_option('smsify-api-key', $_POST['apiKey']);            
+        }        
+        if(isset($_POST['smsify-enable-sender-id-override'])) {
+            update_site_option('smsify-enable-sender-id-override', 1);
+            $smsify_enable_sender_id_override = true;
+        } else {
+            update_site_option('smsify-enable-sender-id-override', 0);
+            $smsify_enable_sender_id_override = false;            
+        }    
+        if($_POST['apiKey'] != '--- Not shown ---' && strlen($_POST['apiKey']) != 32) {
+            $api_key = get_site_option('smsify-api-key');
+            $valid_key = false;
+            $validationMessage = __("Invalid API Key");
+        } else {
+            $api_key = get_site_option('smsify-api-key');
+            $valid_key = true;
+            $validationMessage = __("Your settings have been updated successfully");            
+        }
     } else {
         $api_key = get_site_option('smsify-api-key');
+        $smsify_enable_sender_id_override = get_site_option('smsify-enable-sender-id-override');
         if($api_key) {
             $validationMessage = __("Your API Key has been validated successfully.");
             $valid_key = true;

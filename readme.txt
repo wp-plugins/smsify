@@ -2,7 +2,7 @@
 Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
-Tested up to: 3.8.3
+Tested up to: 3.8
 Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SMSify is a free WordPress plugin that allows you to <strong>send personalised SMS messages</strong> to a large number of contacts very quickly.
 
 == Description ==
-SMSify is a premium SMS plugin that allows you to send and receive SMS within your own WordPress dashboard.  This plugin has been built with performance in mindr and it does not modify your databse. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.
+SMSify is a premium SMS plugin that allows you to send and receive SMS within your own WordPress dashboard.  This plugin has been built with performance in mindr and it does not modify your database. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.
 
 Full list of features:
 
@@ -40,7 +40,7 @@ Full list of features:
 *	For an up to date list of FAQs, please visit [http://www.smsify.com.au/faq-page/](http://www.smsify.com.au/faq-page/ "SMSify FAQ page")
 
 == Screenshots ==
-1. SMSify Pro WordPress Admin menu
+1. SMSify WordPress Admin menu
 2. Settings page where you enter your API key
 3. Contact Groups page
 4. Send SMS to your chosen contact group

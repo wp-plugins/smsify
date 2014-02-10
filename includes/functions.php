@@ -5,7 +5,7 @@ function smsify_getConfig() {
     global $smsify_params;
     global $current_user;
     $smsify_params = new stdClass();
-    $smsify_params->appVersion = '1.0.0';
+    $smsify_params->appVersion = '4.1.0';
     $smsify_params->api_key = get_site_option('smsify-api-key');
     $smsify_params->apiprotocol = 'https';
     $smsify_params->apihost = 'www.smsify.com.au';
@@ -44,6 +44,7 @@ function smsify_update_sms_user_data( $user_id ) {
     if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
     update_user_meta( $user_id, 'smsify_mobile', $_POST['smsify_mobile'] );
     update_user_meta( $user_id, 'smsify_message', $_POST['smsify_message'] );
+    update_user_meta( $user_id, 'smsify_sender_id', $_POST['smsify_sender_id'] );
 }
 
 add_action( 'wp_ajax_smsify_sms_handler', 'smsify_sms_handler' );
@@ -107,6 +108,11 @@ function smsify_sms_handler() {
         $validationMessage = __("Your mobile number seems to be invalid.\nPlease correct it and try again.");
     }
     
+    if(isset($_POST['sender_id']) && !is_numeric($_POST['sender_id'])) {
+        $error = true;
+        $validationMessage = __("Your Sender ID seems to be invalid.\nPlease correct it and try again.");
+    }
+    
     if($scheduler && $schedule_date_time == "") {
         $error = true;
         $validationMessage = __("If you choose to schedule your SMS, you must specify schedule date and time.");
@@ -126,6 +132,10 @@ function smsify_sms_handler() {
                         "message" => $message,
                         "scheduler" => $scheduler,
                         "schedule_date_time" => $schedule_date_time));
+
+		if(isset($_POST['sender_id'])) {
+			$args['body']['sender_id'] = $_POST['sender_id'];
+		}
 
         $result = wp_remote_post($smsify_params->apiEndpoint . "/transport/", $args);
         
@@ -167,6 +177,7 @@ function smsify_sms_handler() {
 add_action( 'wp_ajax_smsify_sms_group_handler', 'smsify_sms_group_handler' );
 function smsify_sms_group_handler() {
     global $wpdb;
+    
     if ( !current_user_can( 'edit_user', $user_id ) ) { die("Invalid request - 000"); }
     
     if(!isset($_POST['message'])) {
@@ -202,17 +213,22 @@ function smsify_sms_group_handler() {
     
     if(strlen($message) > 160) {
         $error = true;
-        $validationMessage = "Your message seems to be longer than 160 characters.";
+        $validationMessage = __("Your message seems to be longer than 160 characters.");
     }
     
     if(trim($message) == "" ) {
         $error = true;
-        $validationMessage = "Please enter your SMS message";
+        $validationMessage = __("Please enter your SMS message");
     }
     
     if($scheduler && $schedule_date_time == "") {
         $error = true;
         $validationMessage = __("If you choose to schedule your SMS, you must specify schedule date and time.");
+    }
+    
+    if(isset($_POST['sender_id']) && !is_numeric($_POST['sender_id'])) {
+        $error = true;
+        $validationMessage = __("Your Sender ID seems to be invalid.\nPlease correct it and try again.");
     }
     
     if(!$error) {
@@ -228,8 +244,7 @@ function smsify_sms_group_handler() {
                 $contacts[] = $thisUser;
             }
         }
-        //print_r($contacts);
-        //die();                            
+                                   
         $smsify_params = smsify_getConfig();
         $args = array('timeout' => 30, 
                         "body" => array(
@@ -239,6 +254,11 @@ function smsify_sms_group_handler() {
                         "message" => $message,
                         "scheduler" => $scheduler,
                         "schedule_date_time" => $schedule_date_time));
+        
+        if(isset($_POST['sender_id'])) {
+            $args['body']['sender_id'] = $_POST['sender_id'];
+        }
+        
         $result = wp_remote_post($smsify_params->apiEndpoint . "/transport/", $args);
         
         if ( is_wp_error( $result ) ) {

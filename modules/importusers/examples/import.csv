@@ -1,0 +1,5 @@
+"user_login","user_email","user_pass","first_name","last_name","display_name","role","smsify_mobile","user-group"
+"test","test@smsify.com.au","mypassword","Test","User","Test User","subscriber","61411111111","sydney-childcare"
+"test2","test2@smsify.com.au",,"Test","User","Test User","subscriber","61411111112","sydney-childcare"
+"test3","test3@smsify.com.au",,"Test","User","Test User","subscriber","61411111113","sydney-childcare"
+"test4","test4@smsify.com.au",,"Test","User","Test User","subscriber","61411111114"

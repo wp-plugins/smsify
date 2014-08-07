@@ -11,14 +11,14 @@
  * If not, see: {@link http://www.gnu.org/licenses/}. 
  *
  * @package SMSify
- * @version 4.1.2
+ * @version 4.1.3
  */
 /*
 Plugin Name: SMSify
 Plugin URI: http://www.smsify.com.au/
 Description: <strong>SMSify</strong> is a premium SMS plugin that allows you to <strong>send and receive SMS</strong> within your own WordPress dashboard. SMSify allows you to <strong>import contacts</strong> from a csv file and <strong>schedule SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.  
 Author: SMSify
-Version: 4.1.2
+Version: 4.1.3
 Author URI: http://www.smsify.com.au/
 */
 

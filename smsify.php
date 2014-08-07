@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright: © 2013
+ * Copyright: © 2014
  * {@link http://www.smsify.com.au/ SMSify.}
  * ( coded in Australia )
  *
@@ -11,14 +11,14 @@
  * If not, see: {@link http://www.gnu.org/licenses/}. 
  *
  * @package SMSify
- * @version 4.1.1
+ * @version 4.1.2
  */
 /*
 Plugin Name: SMSify
 Plugin URI: http://www.smsify.com.au/
 Description: <strong>SMSify</strong> is a premium SMS plugin that allows you to <strong>send and receive SMS</strong> within your own WordPress dashboard. SMSify allows you to <strong>import contacts</strong> from a csv file and <strong>schedule SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.  
 Author: SMSify
-Version: 4.1.1
+Version: 4.1.2
 Author URI: http://www.smsify.com.au/
 */
 
@@ -31,7 +31,8 @@ require_once 'modules/importusers/import-users-from-csv.php';
 
 add_action( 'admin_menu', 'smsify_menu' );
 function smsify_menu() {
-    $smsify_page = add_menu_page( 'SMSify', 'SMSify', 'manage_options', 'smsify-settings', null, '/wp-content/plugins/smsify/images/smsify-red-16x16.png' );
+    $blog_url = bloginfo('url');
+    $smsify_page = add_menu_page( 'SMSify', 'SMSify', 'manage_options', 'smsify-settings', null, $blog_url . '/wp-content/plugins/smsify/images/smsify-red-16x16.png' );
     $smsify_page_settings = add_submenu_page( 'smsify-settings', 'SMSify - settings', 'Settings', 'manage_options', 'smsify-settings', 'smsify_settings');
     $smsify_page_groups = add_submenu_page( 'smsify-settings', 'SMSify - groups', 'User Groups', 'manage_options', 'edit-tags.php?taxonomy=user-group');
     $smsify_page_reporting = add_submenu_page( 'smsify-settings', 'SMSify - reporting', 'Reporting', 'manage_options', 'smsify-reporting', 'smsify_reporting');

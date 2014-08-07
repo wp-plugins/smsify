@@ -49,6 +49,9 @@ Full list of features:
 7. Usage report page
 
 == Changelog ==
+= 4.1.3 =
+* Minor icon fix. Use correct variable to get path to the homepage.
+
 = 4.1.2 =
 * Fix SMSify icon path for subdirectory installations
 

@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
 Tested up to: 3.9.2
-Stable tag: 4.1.3
+Stable tag: 4.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ Full list of features:
 7. Usage report page
 
 == Changelog ==
+= 4.1.4 =
+* Fix header warnings on some installations that already set headers.
+
 = 4.1.3 =
 * Minor icon fix. Use correct variable to get path to the homepage.
 

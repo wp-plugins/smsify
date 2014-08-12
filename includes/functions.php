@@ -5,7 +5,7 @@ function smsify_getConfig() {
     global $smsify_params;
     global $current_user;
     $smsify_params = new stdClass();
-    $smsify_params->appVersion = '4.1.0';
+    $smsify_params->appVersion = '4.1.5';
     $smsify_params->api_key = get_site_option('smsify-api-key');
     $smsify_params->apiprotocol = 'https';
     $smsify_params->apihost = 'www.smsify.com.au';
@@ -52,27 +52,27 @@ function smsify_sms_handler() {
     if ( !current_user_can( 'edit_user', $user_id ) ) { die("Invalid request - 000"); }
     
     if(!isset($_POST['send_to'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 002");
     }
     
     if(!isset($_POST['message'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 003");
     }
     
     if(!isset($_POST['user_id'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 004");
     }
     
     if(!isset($_POST['scheduler'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 005");
     }
     
     if(!isset($_POST['schedule_date_time'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 006");
     }
     
@@ -125,6 +125,7 @@ function smsify_sms_handler() {
         $contact->last_name = $last_name;
         $contact->mobile_number = $mobile;
         $args = array('timeout' => 30, 
+                        "sslverify" => false,
                         "body" => array(
                         "key"     => $key, 
                         "method"  => $method, 
@@ -181,22 +182,22 @@ function smsify_sms_group_handler() {
     if ( !current_user_can( 'edit_user', $user_id ) ) { die("Invalid request - 000"); }
     
     if(!isset($_POST['message'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 001");
     }
     
     if(!isset($_POST['tag_id'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 002");
     }
     
     if(!isset($_POST['scheduler'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 003");
     }
     
     if(!isset($_POST['schedule_date_time'])) {
-        header("HTTP/1.1 500 Invalid Request");
+        //header("HTTP/1.1 500 Invalid Request");
         die("Invalid request - 004");
     }
     
@@ -246,7 +247,8 @@ function smsify_sms_group_handler() {
         }
                                    
         $smsify_params = smsify_getConfig();
-        $args = array('timeout' => 30, 
+        $args = array("timeout" => 30, 
+                        "sslverify" => false,
                         "body" => array(
                         "key"     => $key, 
                         "method"  => $method, 

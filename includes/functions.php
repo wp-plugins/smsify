@@ -5,14 +5,14 @@ function smsify_getConfig() {
     global $smsify_params;
     global $current_user;
     $smsify_params = new stdClass();
-    $smsify_params->appVersion = '4.1.5';
+    $smsify_params->appVersion = '4.1.6';
     $smsify_params->api_key = get_site_option('smsify-api-key');
     $smsify_params->apiprotocol = 'https';
     $smsify_params->apihost = 'www.smsify.com.au';
     $smsify_params->apiEndpoint = $smsify_params->apiprotocol . '://' . $smsify_params->apihost;
-    $smsify_params->cssurl = '/' . PLUGINDIR . '/smsify/css';
-    $smsify_params->jsurl = '/' . PLUGINDIR . '/smsify/js';
-    $smsify_params->imageurl = '/' . PLUGINDIR . '/smsify/images';
+    $smsify_params->cssurl = plugins_url() . '/smsify/css';
+    $smsify_params->jsurl = plugins_url() . '/smsify/js';
+    $smsify_params->imageurl = plugins_url() . '/smsify/images';
     $smsify_params->smsifydir = $_SERVER["DOCUMENT_ROOT"] . '/' . PLUGINDIR . '/smsify';
     
     $smsify_params->messages = array(

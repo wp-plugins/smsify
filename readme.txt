@@ -50,7 +50,7 @@ Full list of features:
 
 == Changelog ==
 = 4.1.6 =
-* Fix SSL verification check when sending SMS
+* Fix assets path for sub directory WP installs
 
 = 4.1.5 =
 * Fix SSL verification check when sending SMS

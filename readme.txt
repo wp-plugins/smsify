@@ -2,8 +2,8 @@
 Contributors: mtomic
 Tags: sms, mobile, messaging
 Requires at least: 3.2
-Tested up to: 3.9.2
-Stable tag: 4.1.6
+Tested up to: 4.1
+Stable tag: 4.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ Full list of features:
 7. Usage report page
 
 == Changelog ==
+= 4.1.7 =
+* WordPress 4.1 compatibility release
+
 = 4.1.6 =
 * Fix assets path for sub directory WP installs
 

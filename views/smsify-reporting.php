@@ -5,6 +5,7 @@
 //TODO Add Users array loop.
 ?>
 <h2><?php _e("SMS Usage in Year " . $selected_year . " by month") ?></h2>
+<small>NOTE: Recurring scheduled messages will NOT appear in this report.</small>
 <form action="" method="get">
     <input type="hidden" name="page" value="smsify-reporting">
     <div class="tablenav top">

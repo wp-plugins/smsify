@@ -8,6 +8,10 @@ if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
     <table class="form-table">
         <tbody>
             <tr>
+                <th><?php _e("SMS credits remaining"); ?>:</th>
+                <td><?php _e($credits) ?></td>            
+            </tr>
+            <tr>
                 <th><?php _e("API Key"); ?>:</th>
                 <td><input type="text" class="regular-text" name="apiKey" id="apiKey" maxlength="50" value="<?php if($valid_key) { _e('--- Not shown ---'); } else { echo $api_key; }?>" /><?php if($valid_key) : ?><button id="smsify_toggle_key" class="button" onclick="toggleAPIKey(event, '--- Not shown ---','<?php echo $api_key; ?>', '<?php _e("Show") ?>', '<?php _e("Hide") ?>')">Show</button><?php endif; ?></td>            
             </tr>

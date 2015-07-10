@@ -1,16 +1,16 @@
 === SMSify ===
 Contributors: mtomic
-Tags: sms, mobile, messaging
+Tags: sms, mobile, messaging, marketing
 Requires at least: 3.2
-Tested up to: 4.1
-Stable tag: 4.1.7
+Tested up to: 4.2
+Stable tag: 4.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 SMSify is a free WordPress plugin that allows you to <strong>send personalised SMS messages</strong> to a large number of contacts very quickly.
 
 == Description ==
-SMSify is a premium SMS plugin that allows you to send and receive SMS within your own WordPress dashboard.  This plugin has been built with performance in mindr and it does not modify your database. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.
+SMSify is a premium SMS plugin that allows you to send and receive SMS within your own WordPress dashboard.  This plugin has been built with performance in mind and it does not modify your database. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule recurring SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.
 
 Full list of features:
 
@@ -19,6 +19,7 @@ Full list of features:
 *	Import contacts
 *	Personalised messages - use {first_name} {last_name} to auto-insert personal data
 *	Scheduled messages
+*	Recurring messages
 *	UTF8 support and special characters
 *	View message responses
 *	Easy to use admin dashboard
@@ -28,12 +29,12 @@ Full list of features:
 *	Easy SMS credit structure (1 credit = 1 SMS)
 
 == Requirements ==
-*	Modern web browser such as Google Chrome, Firefox, Safari or Internet Explorer 9+, 10 recommended.
+*	Modern web browser such as Google Chrome, Firefox, Safari or Internet Explorer 10+ recommended.
 
 == Installation ==
 *	Upload `smsify` folder to the `/wp-content/plugins/` directory
 *	Activate the plugin through the 'Plugins' menu in WordPress
-*	Purchase SMS credits at [www.smsify.com.au](http://www.smsify.com.au "SMSify - SMS WordPress plugin")
+*	Get SMS credits at [www.smsify.com.au](http://www.smsify.com.au "SMSify - SMS WordPress plugin")
 *	Enjoy!
 
 == Frequently Asked Questions ==
@@ -49,6 +50,13 @@ Full list of features:
 7. Usage report page
 
 == Changelog ==
+= 4.1.8 =
+* Added support for recurring scheduled SMS
+* Added ability to cancel scheduled messages
+* Showing remaining credits on the settings page
+* Nicer display of incoming messages, including time localisation
+* WordPress 4.2 compatibility release
+
 = 4.1.7 =
 * WordPress 4.1 compatibility release
 
@@ -145,5 +153,4 @@ Full list of features:
 * SMSify was born
 
 == Upgrade Notice ==
-Adding Mobile Number custom field to your existing WordPress contacts. Sending SMS to your native WordPress contacts. Added support for 2-way SMS. Added support for special characters (UTF8).
-IMPORTANT: If you are upgrading SMSify plugin from version 3.0.8 or below, make sure you backup your existing contacts. They will no longer be accessible since SMSify v4.0.0 stores and sends SMS to your WordPress users. For any questions, plese contact support@smsify.com.au  
+New version of SMSify plugin is available.

@@ -5,7 +5,7 @@ function smsify_getConfig() {
 	global $smsify_params;
 	global $current_user;
 	$smsify_params = new stdClass();
-	$smsify_params->appVersion = '4.2.0';
+	$smsify_params->appVersion = '5.0.0';
 	$smsify_params->api_key = get_site_option('smsify-api-key');
 	$smsify_params->apiprotocol = 'https';
 	$smsify_params->apihost = 'api.smsify.com.au';

@@ -5,7 +5,7 @@ function smsify_getConfig() {
 	global $smsify_params;
 	global $current_user;
 	$smsify_params = new stdClass();
-	$smsify_params->appVersion = '5.0.0';
+	$smsify_params->appVersion = '5.0.1';
 	$smsify_params->api_key = get_site_option('smsify-api-key');
 	$smsify_params->apiprotocol = 'https';
 	$smsify_params->apihost = 'api.smsify.com.au';
@@ -152,7 +152,6 @@ function smsify_sms_handler() {
 		}
 
 		$result = wp_remote_post($smsify_params->apiEndpoint . "/sms", $args);
-		
 		if ( is_wp_error( $result ) ) {
 			$validationMessage = $result->get_error_message();
 			$returnMessage->status = false;
@@ -160,8 +159,8 @@ function smsify_sms_handler() {
 			$validationMessage = __($result['body']);
 			$returnMessage->status = false;
 		} else {
-			$response = $result['response'];
-			if($response['code'] == 200) {
+			$response = json_decode($result['body']);
+			if($response->code == 200) {
 				$returnMessage->status = true;
 				if($scheduler) {    
 					$validationMessage = __("Your SMS has been scheduled successfully.");
@@ -175,7 +174,7 @@ function smsify_sms_handler() {
 				}
 			} else {
 				$returnMessage->status = false;
-				$validationMessage = __($response['message']);
+				$validationMessage = __($response->message);
 			}
 		}
 		$returnMessage->message = $validationMessage;
@@ -287,8 +286,8 @@ function smsify_sms_group_handler() {
 			$validationMessage = __($result['body']);
 			$returnMessage->status = false;
 		} else {
-			$response = $result['response'];
-			if($response['code'] == 200) {
+			$response = json_decode($result['body']);
+			if($response->code == 200) {
 				$returnMessage->status = true;
 				if($scheduler) {    
 					$validationMessage = __("Your SMS has been scheduled successfully.");
@@ -302,7 +301,7 @@ function smsify_sms_group_handler() {
 				}
 			} else {
 				$returnMessage->status = false;
-				$validationMessage = __($response['message']);
+				$validationMessage = __($response->message);
 			}
 		}
 		$returnMessage->message = $validationMessage;

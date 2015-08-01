@@ -3,7 +3,7 @@ Contributors: mtomic
 Tags: sms, mobile, messaging, marketing
 Requires at least: 3.2
 Tested up to: 4.2
-Stable tag: 5.0.0
+Stable tag: 5.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,18 +50,22 @@ Full list of features:
 7. Usage report page
 
 == Changelog ==
-= 4.1.8 =
-* Added support for recurring scheduled SMS
-* Added ability to cancel scheduled messages
-* Showing remaining credits on the settings page
-* Nicer display of incoming messages, including time localisation
-* WordPress 4.2 compatibility release
+
+= 5.0.1 =
+* Update some validation messages to be more descriptive.
 
 = 5.0.0 =
 * Show inbound messages in a cleaner format.
 * Show SMS times in local timeozone.
 * Optimise plugin performance and load data faster.
 * Other user inderface improvements.
+
+= 4.1.8 =
+* Added support for recurring scheduled SMS
+* Added ability to cancel scheduled messages
+* Showing remaining credits on the settings page
+* Nicer display of incoming messages, including time localisation
+* WordPress 4.2 compatibility release
 
 = 4.1.7 =
 * WordPress 4.1 compatibility release

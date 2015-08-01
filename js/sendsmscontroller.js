@@ -134,8 +134,6 @@ $(document).ready(function() {
 			"schedule_date_time": schedule_date_time,
 			"message": message
 		};
-		
-		console.log(smsifyData);
 
 		if(sender_id) {
 			smsifyData["sender_id"] = sender_id;

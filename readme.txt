@@ -57,6 +57,12 @@ Full list of features:
 * Nicer display of incoming messages, including time localisation
 * WordPress 4.2 compatibility release
 
+= 5.0.0 =
+* Show inbound messages in a cleaner format.
+* Show SMS times in local timeozone.
+* Optimise plugin performance and load data faster.
+* Other user inderface improvements.
+
 = 4.1.7 =
 * WordPress 4.1 compatibility release
 

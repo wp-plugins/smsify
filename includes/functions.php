@@ -5,10 +5,10 @@ function smsify_getConfig() {
 	global $smsify_params;
 	global $current_user;
 	$smsify_params = new stdClass();
-	$smsify_params->appVersion = '4.2.0';
+	$smsify_params->appVersion = '5.0.0';
 	$smsify_params->api_key = get_site_option('smsify-api-key');
 	$smsify_params->apiprotocol = 'https';
-	$smsify_params->apihost = 'www.smsify.com.au';
+	$smsify_params->apihost = 'api.smsify.com.au';
 	$smsify_params->apiEndpoint = $smsify_params->apiprotocol . '://' . $smsify_params->apihost;
 	$smsify_params->cssurl = plugins_url() . '/smsify/css';
 	$smsify_params->jsurl = plugins_url() . '/smsify/js';
@@ -137,9 +137,9 @@ function smsify_sms_handler() {
 		$contact->mobile_number = $mobile;
 		$args = array('timeout' => 30, 
 						"sslverify" => false,
+						"method" => "POST",
+						"headers" => array("x-smsify-key" => $key),
 						"body" => array(
-						"key"     => $key, 
-						"method"  => $method, 
 						"contacts" => array($contact),
 						"message" => $message,
 						"scheduler" => $scheduler,
@@ -151,7 +151,7 @@ function smsify_sms_handler() {
 			$args['body']['sender_id'] = $_POST['sender_id'];
 		}
 
-		$result = wp_remote_post($smsify_params->apiEndpoint . "/transport/", $args);
+		$result = wp_remote_post($smsify_params->apiEndpoint . "/sms", $args);
 		
 		if ( is_wp_error( $result ) ) {
 			$validationMessage = $result->get_error_message();
@@ -160,8 +160,8 @@ function smsify_sms_handler() {
 			$validationMessage = __($result['body']);
 			$returnMessage->status = false;
 		} else {
-			$result = json_decode($result['body']);
-			if($result->status == true) {
+			$response = $result['response'];
+			if($response['code'] == 200) {
 				$returnMessage->status = true;
 				if($scheduler) {    
 					$validationMessage = __("Your SMS has been scheduled successfully.");
@@ -173,17 +173,17 @@ function smsify_sms_handler() {
 					//Update stats for reporting
 					smsify_update_usage(1);
 				}
-				smsify_update_usage(1);
 			} else {
 				$returnMessage->status = false;
-				$validationMessage = __($result->message);
+				$validationMessage = __($response['message']);
 			}
 		}
 		$returnMessage->message = $validationMessage;
    } else {
-	   $returnMessage->status = false;
+	   	$returnMessage->status = false;
 		$returnMessage->message = $validationMessage;
    }
+
    echo json_encode($returnMessage);
    die();
 }
@@ -264,9 +264,9 @@ function smsify_sms_group_handler() {
 		$smsify_params = smsify_getConfig();
 		$args = array("timeout" => 30, 
 						"sslverify" => false,
+						"method" => "POST",
+						"headers" => array("x-smsify-key" => $key),
 						"body" => array(
-						"key"     => $key, 
-						"method"  => $method, 
 						"contacts" => $contacts,
 						"message" => $message,
 						"run_every" => intval($run_every),
@@ -278,7 +278,7 @@ function smsify_sms_group_handler() {
 			$args['body']['sender_id'] = $_POST['sender_id'];
 		}
 		
-		$result = wp_remote_post($smsify_params->apiEndpoint . "/transport/", $args);
+		$result = wp_remote_post($smsify_params->apiEndpoint . "/sms", $args);
 		
 		if ( is_wp_error( $result ) ) {
 			$validationMessage = $result->get_error_message();
@@ -287,8 +287,8 @@ function smsify_sms_group_handler() {
 			$validationMessage = __($result['body']);
 			$returnMessage->status = false;
 		} else {
-			$result = json_decode($result['body']);
-			if($result->status == true) {
+			$response = $result['response'];
+			if($response['code'] == 200) {
 				$returnMessage->status = true;
 				if($scheduler) {    
 					$validationMessage = __("Your SMS has been scheduled successfully.");
@@ -302,7 +302,7 @@ function smsify_sms_group_handler() {
 				}
 			} else {
 				$returnMessage->status = false;
-				$validationMessage = __($result->message);
+				$validationMessage = __($response['message']);
 			}
 		}
 		$returnMessage->message = $validationMessage;
@@ -335,14 +335,13 @@ function smsify_delete_schedule() {
 	
 	if(!$error) {    
 		$smsify_params = smsify_getConfig();
-		$args = array('timeout' => 30, 
+		$args = array(	"method" => "DELETE",
+						"timeout" => 30, 
 						"sslverify" => false,
-						"body" => array(
-						"key"     => $key, 
-						"method"  => $method, 
-						"task_id" => $task_id));
+						"headers" => array("x-smsify-key" => $key)
+				);
 
-		$result = wp_remote_post($smsify_params->apiEndpoint . "/transport/", $args);
+		$result = wp_remote_post($smsify_params->apiEndpoint . "/schedule/remove/".$task_id, $args);
 
 		if ( is_wp_error( $result ) ) {
 			$validationMessage = $result->get_error_message();
@@ -352,14 +351,8 @@ function smsify_delete_schedule() {
 			$returnMessage->status = false;
 		} else {
 			$result = json_decode($result['body']);
-			
-			if($result->status == true) {
-				$returnMessage->status = true;
-				$validationMessage = __($result->message);
-			} else {
-				$returnMessage->status = false;
-				$validationMessage = __($result->message);
-			}
+			$returnMessage->status = true;
+			$validationMessage = __($result->message);
 		}
 		$returnMessage->message = $validationMessage;
 	} else {
@@ -460,4 +453,10 @@ function smsify_get_users() {
 					$wpdb->prepare(
 						$sql, $meta_key));
 	return $users;   
+}
+
+function smsify_get_credits($key) {
+	global $smsify_params;
+	$args = array('timeout' => 30, 'sslverify' => false, 'headers' => array('x-smsify-key' => $key));
+	return wp_remote_get($smsify_params->apiEndpoint . "/account/credits", $args);
 }

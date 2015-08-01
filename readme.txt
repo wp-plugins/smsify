@@ -3,14 +3,14 @@ Contributors: mtomic
 Tags: sms, mobile, messaging, marketing
 Requires at least: 3.2
 Tested up to: 4.2
-Stable tag: 4.2.0
+Stable tag: 5.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-SMSify is a free WordPress plugin that allows you to <strong>send personalised SMS messages</strong> to a large number of contacts very quickly.
+SMSify is a premium WordPress plugin that allows you to <strong>schedule personalised SMS messages</strong> to your subscribers. SMSify can also receive messages and display them in your WordPress dashboard.
 
 == Description ==
-SMSify is a premium SMS plugin that allows you to send and receive SMS within your own WordPress dashboard.  This plugin has been built with performance in mind and it does not modify your database. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule recurring SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.
+SMSify is a premium WordPress plugin that allows you to <strong>schedule personalised SMS messages</strong> to your subscribers. SMSify can also receive messages and display them in your WordPress dashboard.  This plugin has been built with performance in mind and it does not modify your database. This plugin allows you to <strong>import contacts</strong> from a csv file and <strong>schedule recurring SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.
 
 Full list of features:
 
@@ -56,6 +56,12 @@ Full list of features:
 * Showing remaining credits on the settings page
 * Nicer display of incoming messages, including time localisation
 * WordPress 4.2 compatibility release
+
+= 5.0.0 =
+* Show inbound messages in a cleaner format.
+* Show SMS times in local timeozone.
+* Optimise plugin performance and load data faster.
+* Other user inderface improvements.
 
 = 4.1.7 =
 * WordPress 4.1 compatibility release

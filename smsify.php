@@ -11,14 +11,14 @@
  * If not, see: {@link http://www.gnu.org/licenses/}. 
  *
  * @package SMSify
- * @version 4.2.0
+ * @version 5.0.1
  */
 /*
 Plugin Name: SMSify
 Plugin URI: http://www.smsify.com.au/
 Description: <strong>SMSify</strong> is a premium SMS plugin that allows you to <strong>send and receive SMS</strong> within your own WordPress dashboard. SMSify allows you to <strong>import contacts</strong> from a csv file and <strong>schedule recurring SMS messages</strong>.  It features a native WordPress interface that is very simple to use. Screenshots available.  
 Author: SMSify
-Version: 4.2.0
+Version: 5.0.1
 Author URI: http://www.smsify.com.au/
 */
 
@@ -35,9 +35,9 @@ function smsify_menu() {
 	$smsify_page = add_menu_page( 'SMSify', 'SMSify', 'manage_options', 'smsify-settings', null, get_site_url() . '/wp-content/plugins/smsify/images/smsify-red-16x16.png' );
 	$smsify_page_settings = add_submenu_page( 'smsify-settings', 'SMSify - settings', 'Settings', 'manage_options', 'smsify-settings', 'smsify_settings');
 	$smsify_page_groups = add_submenu_page( 'smsify-settings', 'SMSify - groups', 'User Groups', 'manage_options', 'edit-tags.php?taxonomy=user-group');
-	$smsify_page_reporting = add_submenu_page( 'smsify-settings', 'SMSify - schedules', 'Schedules', 'manage_options', 'smsify-schedules', 'smsify_schedules');
-	$smsify_page_reporting = add_submenu_page( 'smsify-settings', 'SMSify - reporting', 'Reporting', 'manage_options', 'smsify-reporting', 'smsify_reporting');
 	$smsify_page_responses = add_submenu_page( 'smsify-settings', 'SMSify - responses', 'Responses', 'manage_options', 'smsify-responses', 'smsify_responses');
+	$smsify_page_schedules = add_submenu_page( 'smsify-settings', 'SMSify - schedules', 'Schedules', 'manage_options', 'smsify-schedules', 'smsify_schedules');
+	$smsify_page_reporting = add_submenu_page( 'smsify-settings', 'SMSify - reporting', 'Reporting', 'manage_options', 'smsify-reporting', 'smsify_reporting');
 }
 
 function smsify_settings() {
@@ -54,16 +54,16 @@ function smsify_settings() {
 	if(isset($_POST['activate'])) {
 		if(strlen(trim($_POST['apiKey'])) == 32) {
 			$api_key = trim($_POST['apiKey']);
-			$args = array('timeout' => 30, 'sslverify' => false);
-			$result = wp_remote_get($smsify_params->apiEndpoint . "/transport/?method=getAccountData&key=".$api_key, $args);
-			if ( is_wp_error( $result ) ) {
-				$validationMessage = $result->get_error_message();
-			}else if($result['response']['code'] != 200) {
-				$validationMessage = __($result['body']);
+			$response = smsify_get_credits($api_key);
+			if ( is_wp_error( $response ) ) {
+				$validationMessage = $response->get_error_message();
+			}else if($response['response']['code'] != 200) {
+				$validationMessage = __($response['body']);
 			} else {
-				$result = json_decode($result['body']);
+				$credits = json_decode($response['body'])->result;
+
 				update_site_option('smsify-api-key', $api_key);
-				if($result->credits > 0) {    
+				if($response->result > 0) {    
 					$validationMessage = __("Your API Key has been validated successfully.");
 				} else {
 					$validationMessage = __("Your API Key has been validated successfully, but you don't seem to have any credits on your account. Please recharge your account to continue sending SMS.");
@@ -77,7 +77,9 @@ function smsify_settings() {
 		$validationMessage = __("Before you start using SMSify, please activate the plugin by pasting your API Key in the text field provided.");
 	} else if(isset($_POST['update'])) {
 		if(strlen($_POST['apiKey']) == 32) {
-			update_site_option('smsify-api-key', $_POST['apiKey']);            
+			update_site_option('smsify-api-key', $_POST['apiKey']);
+			$response = smsify_get_credits($_POST['apiKey']);
+			$credits = json_decode($response['body'])->result;
 		}        
 		if(isset($_POST['smsify-enable-sender-id-override'])) {
 			update_site_option('smsify-enable-sender-id-override', 1);
@@ -94,6 +96,8 @@ function smsify_settings() {
 			$api_key = get_site_option('smsify-api-key');
 			$valid_key = true;
 			$validationMessage = __("Your settings have been updated successfully");            
+			$response = smsify_get_credits($api_key);
+			$credits = json_decode($response['body'])->result;
 		}
 	} else {
 		$api_key = get_site_option('smsify-api-key');
@@ -101,15 +105,14 @@ function smsify_settings() {
 		if($api_key) {
 			$validationMessage = __("Your API Key has been validated successfully.");
 			$valid_key = true;
-			$args = array('timeout' => 30, 'sslverify' => false);
-			$response = wp_remote_get($smsify_params->apiEndpoint . "/transport/?method=getCreditsRaw&key=".$api_key, $args);
+			$response = smsify_get_credits($api_key);
 			
 			if ( is_wp_error( $response ) ) {
 				$validationMessage = $response->get_error_message();
 			} else if($response['response']['code'] != 200) {
 				$validationMessage = __($response['body']);
 			} else {
-				$credits = intval($response['body']);
+				$credits = json_decode($response['body'])->result;
 			}
 		} else {
 			$validationMessage = __("Before you start using SMSify, please activate the plugin by pasting your API Key in the text field provided.");            
@@ -144,15 +147,16 @@ function smsify_schedules() {
 	wp_enqueue_style('font-awesome');
 	wp_enqueue_script('smsify-sms-controller');
 	
-	$args = array('timeout' => 30, 'sslverify' => false);
-	$response = wp_remote_get($smsify_params->apiEndpoint . "/transport/?method=getSchedules&key=".$smsify_params->api_key, $args);
+	$args = array('timeout' => 30, 'sslverify' => false, 'headers' => array('x-smsify-key' => $smsify_params->api_key));
+	$response = wp_remote_get($smsify_params->apiEndpoint . "/schedule/list", $args);
+	
 	if ( is_wp_error( $response ) ) {
 		$validationMessage = $response->get_error_message();
 	}else if($response['response']['code'] != 200) {
-		$validationMessage = __($response['body']);
+		$validationMessage = __(json_decode($response['body'])->message);
 		wp_die( __($validationMessage) );
 	} else {
-		$response = json_decode($response['body']);
+		$response = json_decode($response['body'])->result;
 		require_once 'views/smsify-schedules.php';
 	}
 }
@@ -187,21 +191,17 @@ function smsify_responses() {
 	$smsify_params = smsify_getConfig();
 	wp_enqueue_style('font-awesome');
 	wp_enqueue_script('smsify-sms-controller');
-	$args = array('timeout' => 30, 'sslverify' => false);
-	$account = wp_remote_get($smsify_params->apiEndpoint . "/transport/?method=getAccountDataNew&responses=1&key=".$smsify_params->api_key, $args);
-	if ( is_wp_error( $account ) ) {
-		$validationMessage = $account->get_error_message();
-	}else if($account['response']['code'] != 200) {
-		$validationMessage = __($account['body']);
+	$args = array('timeout' => 30, 'sslverify' => false, 'headers' => array('x-smsify-key' => $smsify_params->api_key));
+	$response = wp_remote_get($smsify_params->apiEndpoint . "/account/data/responses", $args);
+	if ( is_wp_error( $response ) ) {
+		$validationMessage = $response->get_error_message();
+	}else if($response['response']['code'] != 200) {
+		$validationMessage = __(json_decode($response['body'])->message);
 		wp_die( __($validationMessage) );
 	} else {
-		$account = json_decode($account['body']);
-		if($account->level >= 3) {
-			$responses = $account->responses;    
-			require_once 'views/smsify-responses.php';
-		} else {
-			wp_die( __( 'SMS responses can only be viewed if you are a Business member. <a href="http://' . __($smsify_params->apihost) . '/?utm_source=wp-responses" target="_blank">Please upgrade your membership</a> to use this cool feature.' ) );
-		}
+		$account = json_decode($response['body'])->result;
+		$responses = $account->responses;    
+		require_once 'views/smsify-responses.php';
 	}
 	
 }
